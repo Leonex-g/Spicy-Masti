@@ -31,10 +31,13 @@ header {
 /* SEARCH */
 .search-box {
   padding: 16px;
+  display: flex;
+  justify-content: center;
 }
 
 .search-box input {
   width: 100%;
+  max-width: 420px;
   padding: 14px 16px;
   font-size: 1rem;
   border-radius: 12px;
@@ -52,12 +55,20 @@ header {
 }
 
 .category-title {
-  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #111;
   border-bottom: 2px solid #f2f2f2;
-  padding: 8px 0;
+  padding: 10px 0;
   cursor: pointer;
+}
+
+.arrow {
+  font-size: 1.2rem;
+  transition: transform 0.2s;
 }
 
 .items {
@@ -90,7 +101,7 @@ footer {
 /* Desktop */
 @media (min-width: 768px) {
   .menu, #searchResults {
-    max-width: 700px;
+    max-width: 720px;
     margin: auto;
   }
 }
@@ -115,7 +126,10 @@ footer {
 
   <!-- Burger -->
   <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">Burger</div>
+    <div class="category-title" onclick="toggleCategory(this)">
+      <span>Burger (4)</span>
+      <span class="arrow">▼</span>
+    </div>
     <div class="items">
       <div class="menu-item"><span>Aloo Tikki Burger</span><span>₹40</span></div>
       <div class="menu-item"><span>Cheese Burger</span><span>₹55</span></div>
@@ -126,7 +140,10 @@ footer {
 
   <!-- Maggi -->
   <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">Maggi</div>
+    <div class="category-title" onclick="toggleCategory(this)">
+      <span>Maggi (6)</span>
+      <span class="arrow">▼</span>
+    </div>
     <div class="items">
       <div class="menu-item"><span>Masala Maggi</span><span>₹30</span></div>
       <div class="menu-item"><span>Double Masala Maggi</span><span>₹35</span></div>
@@ -139,7 +156,10 @@ footer {
 
   <!-- Snacks -->
   <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">Snacks</div>
+    <div class="category-title" onclick="toggleCategory(this)">
+      <span>Snacks (7)</span>
+      <span class="arrow">▼</span>
+    </div>
     <div class="items">
       <div class="menu-item"><span>Plain Sweetcorn</span><span>₹40</span></div>
       <div class="menu-item"><span>Classic Sweetcorn</span><span>₹50</span></div>
@@ -153,7 +173,10 @@ footer {
 
   <!-- Shakes -->
   <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">Shakes</div>
+    <div class="category-title" onclick="toggleCategory(this)">
+      <span>Shakes (5)</span>
+      <span class="arrow">▼</span>
+    </div>
     <div class="items">
       <div class="menu-item"><span>Iced Americano</span><span>₹80</span></div>
       <div class="menu-item"><span>Cold Coffee Shake</span><span>₹100</span></div>
@@ -165,7 +188,10 @@ footer {
 
   <!-- Soup -->
   <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">Soup</div>
+    <div class="category-title" onclick="toggleCategory(this)">
+      <span>Soup (3)</span>
+      <span class="arrow">▼</span>
+    </div>
     <div class="items">
       <div class="menu-item"><span>Mix Veg Soup</span><span>₹50</span></div>
       <div class="menu-item"><span>Hot & Sour Soup</span><span>₹50</span></div>
@@ -175,7 +201,10 @@ footer {
 
   <!-- Dessert -->
   <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">Dessert</div>
+    <div class="category-title" onclick="toggleCategory(this)">
+      <span>Dessert (1)</span>
+      <span class="arrow">▼</span>
+    </div>
     <div class="items">
       <div class="menu-item"><span>Gulab Jamun (3 pcs)</span><span>₹50</span></div>
     </div>
@@ -190,7 +219,15 @@ footer {
 <script>
 function toggleCategory(title) {
   const items = title.nextElementSibling;
-  items.style.display = items.style.display === "none" ? "block" : "none";
+  const arrow = title.querySelector(".arrow");
+
+  if (items.style.display === "none") {
+    items.style.display = "block";
+    arrow.textContent = "▼";
+  } else {
+    items.style.display = "none";
+    arrow.textContent = "▲";
+  }
 }
 
 function searchMenu() {
