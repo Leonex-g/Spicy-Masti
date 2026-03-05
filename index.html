@@ -1,171 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spicy Masti</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spicy Masti</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #222;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #ffffff;
+  color: #222;
+}
 
-    header {
-      text-align: center;
-      padding: 22px 16px;
-      border-bottom: 1px solid #eee;
-    }
+/* 🔥 LOGO */
+header {
+  text-align: center;
+  padding: 28px 16px;
+}
 
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      color: #d62828;
-      margin: 0;
-    }
+.logo {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ff2e00;
+  text-shadow:
+    0 0 8px #ff6a00,
+    0 0 16px #ff2e00,
+    0 0 24px #ff9900;
+  animation: fireGlow 1.5s infinite alternate;
+}
 
-    .search-section {
-      padding: 16px;
-    }
+@keyframes fireGlow {
+  from {
+    text-shadow:
+      0 0 6px #ff4500,
+      0 0 12px #ff6a00;
+  }
+  to {
+    text-shadow:
+      0 0 12px #ff0000,
+      0 0 24px #ff9900,
+      0 0 36px #ff4500;
+  }
+}
 
-    .search-section label {
-      font-weight: 500;
-      display: block;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-    }
+/* 🔍 SEARCH */
+.search-box {
+  padding: 16px;
+}
 
-    .search-section input {
-      width: 100%;
-      padding: 14px 16px;
-      font-size: 1rem;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      outline: none;
-    }
+.search-box input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  outline: none;
+}
 
-    .menu {
-      padding: 16px;
-    }
+/* 📂 MENU */
+.menu {
+  padding: 16px;
+}
 
-    .category {
-      margin-bottom: 28px;
-    }
+.category {
+  margin-bottom: 18px;
+}
 
-    .category h2 {
-      font-size: 1.3rem;
-      color: #d62828;
-      border-bottom: 2px solid #f2f2f2;
-      padding-bottom: 6px;
-      margin-bottom: 12px;
-    }
+.category-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #d62828;
+  border-bottom: 2px solid #f2f2f2;
+  padding: 8px 0;
+  cursor: pointer;
+}
 
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px dashed #ddd;
-      font-size: 0.95rem;
-    }
+.items {
+  margin-top: 8px;
+}
 
-    .menu-item span {
-      color: #555;
-      font-weight: 500;
-    }
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed #ddd;
+  font-size: 0.95rem;
+}
 
-    footer {
-      text-align: center;
-      padding: 18px;
-      font-size: 0.8rem;
-      color: #777;
-      border-top: 1px solid #eee;
-    }
+/* 🔎 SEARCH RESULT */
+#searchResults {
+  padding: 16px;
+  display: none;
+}
 
-    /* Desktop improvement */
-    @media (min-width: 768px) {
-      .menu {
-        max-width: 700px;
-        margin: auto;
-      }
-    }
-  </style>
+footer {
+  text-align: center;
+  padding: 18px;
+  font-size: 0.8rem;
+  color: #777;
+  border-top: 1px solid #eee;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .menu, #searchResults {
+    max-width: 700px;
+    margin: auto;
+  }
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>Spicy Masti</h1>
+  <div class="logo">Spicy Masti</div>
 </header>
 
-<div class="search-section">
-  <label for="searchInput">Search for dishes</label>
-  <input type="text" id="searchInput" placeholder="Type dish name..." onkeyup="searchMenu()">
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="searchMenu()">
 </div>
 
+<!-- SEARCH RESULTS -->
+<section id="searchResults"></section>
+
+<!-- MENU -->
 <section class="menu" id="menu">
 
   <div class="category">
-    <h2>Burger</h2>
-    <div class="menu-item"><div>Aloo Tikki Burger</div><span>₹40</span></div>
-    <div class="menu-item"><div>Cheese Burger</div><span>₹55</span></div>
-    <div class="menu-item"><div>Double Tikki Burger</div><span>₹60</span></div>
-    <div class="menu-item"><div>French Burger</div><span>₹80</span></div>
+    <div class="category-title" onclick="toggleCategory(this)">Burger</div>
+    <div class="items">
+      <div class="menu-item"><span>Aloo Tikki Burger</span><span>₹40</span></div>
+      <div class="menu-item"><span>Cheese Burger</span><span>₹55</span></div>
+      <div class="menu-item"><span>Double Tikki Burger</span><span>₹60</span></div>
+      <div class="menu-item"><span>French Burger</span><span>₹80</span></div>
+    </div>
   </div>
 
   <div class="category">
-    <h2>Maggi</h2>
-    <div class="menu-item"><div>Masala Maggi</div><span>₹30</span></div>
-    <div class="menu-item"><div>Double Masala Maggi</div><span>₹35</span></div>
-    <div class="menu-item"><div>Veggie Maggi</div><span>₹45</span></div>
-    <div class="menu-item"><div>Cheese Maggi</div><span>₹60</span></div>
-    <div class="menu-item"><div>Chilli Hot Garlic Maggi</div><span>₹70</span></div>
-    <div class="menu-item"><div>Maggi Delight</div><span>₹80</span></div>
+    <div class="category-title" onclick="toggleCategory(this)">Maggi</div>
+    <div class="items">
+      <div class="menu-item"><span>Masala Maggi</span><span>₹30</span></div>
+      <div class="menu-item"><span>Double Masala Maggi</span><span>₹35</span></div>
+      <div class="menu-item"><span>Veggie Maggi</span><span>₹45</span></div>
+      <div class="menu-item"><span>Cheese Maggi</span><span>₹60</span></div>
+      <div class="menu-item"><span>Chilli Hot Garlic Maggi</span><span>₹70</span></div>
+      <div class="menu-item"><span>Maggi Delight</span><span>₹80</span></div>
+    </div>
   </div>
 
   <div class="category">
-    <h2>Snacks</h2>
-    <div class="menu-item"><div>Plain Sweetcorn</div><span>₹40</span></div>
-    <div class="menu-item"><div>Classic Sweetcorn</div><span>₹50</span></div>
-    <div class="menu-item"><div>Butter Masala Sweetcorn</div><span>₹50</span></div>
-    <div class="menu-item"><div>Tandoori Sweetcorn</div><span>₹60</span></div>
-    <div class="menu-item"><div>French Fries</div><span>₹80</span></div>
-    <div class="menu-item"><div>Peri Peri Fries</div><span>₹90</span></div>
-    <div class="menu-item"><div>Cheese Fries</div><span>₹120</span></div>
-  </div>
-
-  <div class="category">
-    <h2>Pasta (Small +₹30 for Large)</h2>
-    <div class="menu-item"><div>Vegetables Macaroni</div><span>₹80</span></div>
-    <div class="menu-item"><div>Ghar Jesa Pasta</div><span>₹80</span></div>
-    <div class="menu-item"><div>White Sauce Pasta</div><span>₹110</span></div>
-    <div class="menu-item"><div>Red Sauce Pasta</div><span>₹110</span></div>
-    <div class="menu-item"><div>Mix Sauce Pasta</div><span>₹110</span></div>
-    <div class="menu-item"><div>Pasta Delight</div><span>₹130</span></div>
-  </div>
-
-  <div class="category">
-    <h2>Shakes</h2>
-    <div class="menu-item"><div>Iced Americano</div><span>₹80</span></div>
-    <div class="menu-item"><div>Cold Coffee Shake</div><span>₹100</span></div>
-    <div class="menu-item"><div>Oreo Shake</div><span>₹110</span></div>
-    <div class="menu-item"><div>KitKat Shake</div><span>₹110</span></div>
-    <div class="menu-item"><div>Chocolate Shake</div><span>₹120</span></div>
-  </div>
-
-  <div class="category">
-    <h2>Soup</h2>
-    <div class="menu-item"><div>Mix Veg Soup</div><span>₹50</span></div>
-    <div class="menu-item"><div>Hot & Sour Soup</div><span>₹50</span></div>
-    <div class="menu-item"><div>Tomato Soup</div><span>₹50</span></div>
-  </div>
-
-  <div class="category">
-    <h2>Dessert</h2>
-    <div class="menu-item"><div>Gulab Jamun (3 pcs)</div><span>₹50</span></div>
+    <div class="category-title" onclick="toggleCategory(this)">Dessert</div>
+    <div class="items">
+      <div class="menu-item"><span>Gulab Jamun (3 pcs)</span><span>₹50</span></div>
+    </div>
   </div>
 
 </section>
@@ -175,15 +166,34 @@
 </footer>
 
 <script>
-  function searchMenu() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
-    const items = document.getElementsByClassName("menu-item");
+function toggleCategory(title) {
+  const items = title.nextElementSibling;
+  items.style.display = items.style.display === "none" ? "block" : "none";
+}
 
-    for (let item of items) {
-      const text = item.innerText.toLowerCase();
-      item.style.display = text.includes(input) ? "flex" : "none";
-    }
+function searchMenu() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const menu = document.getElementById("menu");
+  const results = document.getElementById("searchResults");
+  results.innerHTML = "";
+
+  if (input === "") {
+    menu.style.display = "block";
+    results.style.display = "none";
+    return;
   }
+
+  menu.style.display = "none";
+  results.style.display = "block";
+
+  const items = document.querySelectorAll(".menu-item");
+
+  items.forEach(item => {
+    if (item.innerText.toLowerCase().includes(input)) {
+      results.appendChild(item.cloneNode(true));
+    }
+  });
+}
 </script>
 
 </body>
