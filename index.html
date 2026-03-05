@@ -25,37 +25,43 @@ header {
   font-size: 2.6rem;
   font-weight: 800;
   color: #000;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  text-shadow: 0 3px 8px rgba(0,0,0,0.18);
 }
 
 /* ACTION BUTTONS */
 .action-buttons {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  padding: 0 16px 12px;
+  gap: 14px;
+  padding: 0 16px 14px;
 }
 
 .action-buttons a {
   flex: 1;
   max-width: 200px;
   text-align: center;
-  padding: 12px 14px;
-  border-radius: 12px;
-  font-size: 0.95rem;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   color: #000;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.18), 0 10px 18px rgba(0,0,0,0.15);
+  transition: all 0.15s ease;
 }
 
-/* Call Button */
+.action-buttons a:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+}
+
+/* Button Colors */
 .call-btn {
-  background: #b8f2c2; /* light green */
+  background: #00fa9a;
 }
 
-/* Map Button */
 .map-btn {
-  background: #cce6ff; /* light blue */
+  background: #48d1cc;
 }
 
 /* STICKY SEARCH */
@@ -76,11 +82,18 @@ header {
 .search-box input {
   width: 100%;
   max-width: 420px;
-  padding: 14px 16px;
+  padding: 16px 18px;
   font-size: 1rem;
-  border-radius: 12px;
+  border-radius: 16px;
   border: 1px solid #ccc;
   outline: none;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.12);
+  transition: all 0.15s ease;
+}
+
+.search-box input:focus {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 rgba(0,0,0,0.18);
 }
 
 /* MENU */
@@ -95,7 +108,7 @@ header {
 /* STICKY CATEGORY TITLE */
 .category-title {
   position: sticky;
-  top: 72px;
+  top: 74px;
   background: #fff;
   z-index: 4;
   display: flex;
@@ -144,10 +157,6 @@ footer {
   .menu, #searchResults {
     max-width: 720px;
     margin: auto;
-  }
-
-  .action-buttons a {
-    max-width: 220px;
   }
 }
 </style>
