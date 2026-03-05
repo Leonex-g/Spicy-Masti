@@ -46,6 +46,7 @@ header {
   font-weight: 600;
   text-decoration: none;
   color: #000;
+  background: #eee;
   box-shadow: 0 6px 0 rgba(0,0,0,0.18), 0 10px 18px rgba(0,0,0,0.15);
   transition: all 0.15s ease;
 }
@@ -55,21 +56,15 @@ header {
   box-shadow: 0 2px 0 rgba(0,0,0,0.2);
 }
 
-/* Button Colors */
-.call-btn {
-  background: #00fa9a;
-}
-
-.map-btn {
-  background: #48d1cc;
-}
+.call-btn { background: #00fa9a; }
+.map-btn { background: #48d1cc; }
 
 /* STICKY SEARCH */
 .search-wrapper {
   position: sticky;
   top: 0;
   background: #fff;
-  z-index: 5;
+  z-index: 10;
   padding: 12px 16px;
   border-bottom: 1px solid #eee;
 }
@@ -102,39 +97,56 @@ header {
 }
 
 .category {
-  margin-bottom: 28px;
+  margin-bottom: 26px;
 }
 
-/* STICKY CATEGORY TITLE */
+/* 3D CATEGORY HEADER */
 .category-title {
   position: sticky;
-  top: 74px;
+  top: 78px;
   background: #fff;
-  z-index: 4;
+  z-index: 5;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.15rem;
   font-weight: 600;
-  padding: 10px 0;
-  border-bottom: 2px solid #f2f2f2;
+  padding: 14px 16px;
+  border-radius: 14px;
   cursor: pointer;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.15), 0 10px 18px rgba(0,0,0,0.12);
+  transition: all 0.15s ease;
+}
+
+.category-title:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.18);
 }
 
 .arrow {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
+/* ITEMS */
 .items {
-  margin-top: 8px;
+  margin-top: 14px;
 }
 
 .menu-item {
+  background: #fff;
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px dashed #ddd;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border-radius: 14px;
   font-size: 0.95rem;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.12), 0 10px 16px rgba(0,0,0,0.1);
+  transition: all 0.15s ease;
+}
+
+.menu-item:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.15);
 }
 
 /* SEARCH RESULTS */
@@ -152,7 +164,7 @@ footer {
   border-top: 1px solid #eee;
 }
 
-/* Desktop */
+/* DESKTOP */
 @media (min-width: 768px) {
   .menu, #searchResults {
     max-width: 720px;
@@ -168,25 +180,22 @@ footer {
   <div class="logo">Spicy Masti</div>
 </header>
 
-<!-- CALL & MAP BUTTONS -->
 <div class="action-buttons">
   <a href="tel:7290945445" class="call-btn">Contact Us</a>
   <a href="https://maps.app.goo.gl/RL4HiaMXgbRnvpVm8" target="_blank" class="map-btn">View Location</a>
 </div>
 
-<!-- STICKY SEARCH -->
 <div class="search-wrapper">
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="searchMenu()">
   </div>
 </div>
 
-<!-- SEARCH RESULTS -->
 <section id="searchResults"></section>
 
-<!-- MENU -->
 <section class="menu" id="menu">
 
+  <!-- BURGER -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Burger (4)</span><span class="arrow">▼</span>
@@ -199,6 +208,7 @@ footer {
     </div>
   </div>
 
+  <!-- MAGGI -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Maggi (6)</span><span class="arrow">▼</span>
@@ -213,6 +223,7 @@ footer {
     </div>
   </div>
 
+  <!-- SNACKS -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Snacks (7)</span><span class="arrow">▼</span>
@@ -228,50 +239,14 @@ footer {
     </div>
   </div>
 
-  <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">
-      <span>Shakes (5)</span><span class="arrow">▼</span>
-    </div>
-    <div class="items">
-      <div class="menu-item"><span>Iced Americano</span><span>₹80</span></div>
-      <div class="menu-item"><span>Cold Coffee Shake</span><span>₹100</span></div>
-      <div class="menu-item"><span>Oreo Shake</span><span>₹110</span></div>
-      <div class="menu-item"><span>KitKat Shake</span><span>₹110</span></div>
-      <div class="menu-item"><span>Chocolate Shake</span><span>₹120</span></div>
-    </div>
-  </div>
-
-  <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">
-      <span>Soup (3)</span><span class="arrow">▼</span>
-    </div>
-    <div class="items">
-      <div class="menu-item"><span>Mix Veg Soup</span><span>₹50</span></div>
-      <div class="menu-item"><span>Hot & Sour Soup</span><span>₹50</span></div>
-      <div class="menu-item"><span>Tomato Soup</span><span>₹50</span></div>
-    </div>
-  </div>
-
-  <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">
-      <span>Dessert (1)</span><span class="arrow">▼</span>
-    </div>
-    <div class="items">
-      <div class="menu-item"><span>Gulab Jamun (3 pcs)</span><span>₹50</span></div>
-    </div>
-  </div>
-
 </section>
 
-<footer>
-  © 2026 Spicy Masti
-</footer>
+<footer>© 2026 Spicy Masti</footer>
 
 <script>
 function toggleCategory(title) {
   const items = title.nextElementSibling;
   const arrow = title.querySelector(".arrow");
-
   if (items.style.display === "none") {
     items.style.display = "block";
     arrow.textContent = "▼";
@@ -285,18 +260,14 @@ function searchMenu() {
   const input = document.getElementById("searchInput").value.toLowerCase();
   const menu = document.getElementById("menu");
   const results = document.getElementById("searchResults");
-
   results.innerHTML = "";
-
-  if (input === "") {
+  if (!input) {
     menu.style.display = "block";
     results.style.display = "none";
     return;
   }
-
   menu.style.display = "none";
   results.style.display = "block";
-
   document.querySelectorAll(".menu-item").forEach(item => {
     if (item.innerText.toLowerCase().includes(input)) {
       results.appendChild(item.cloneNode(true));
