@@ -8,46 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* BASE */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: #ffffff;
   color: #222;
-  overflow-x: hidden;
-}
-
-/* 🔥 FIRE BACKGROUND */
-.fire-bg {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.fire-dot {
-  position: absolute;
-  bottom: -20px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  animation: fireMove 6s linear infinite;
-}
-
-@keyframes fireMove {
-  0% { transform: translateY(0); opacity: 0.8; }
-  100% { transform: translateY(-120vh); opacity: 0; }
 }
 
 /* LOGO */
 header {
   text-align: center;
   padding: 28px 16px;
-  position: relative;
-  z-index: 2;
 }
 
 .logo {
@@ -57,7 +28,7 @@ header {
   text-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* 🔍 STICKY SEARCH */
+/* STICKY SEARCH */
 .search-wrapper {
   position: sticky;
   top: 0;
@@ -85,15 +56,13 @@ header {
 /* MENU */
 .menu {
   padding: 16px;
-  position: relative;
-  z-index: 2;
 }
 
 .category {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
-/* 📂 STICKY CATEGORY TITLE */
+/* STICKY CATEGORY TITLE */
 .category-title {
   position: sticky;
   top: 72px;
@@ -129,8 +98,6 @@ header {
 #searchResults {
   padding: 16px;
   display: none;
-  position: relative;
-  z-index: 2;
 }
 
 /* FOOTER */
@@ -140,8 +107,6 @@ footer {
   font-size: 0.8rem;
   color: #777;
   border-top: 1px solid #eee;
-  position: relative;
-  z-index: 2;
 }
 
 /* Desktop */
@@ -156,14 +121,11 @@ footer {
 
 <body>
 
-<!-- 🔥 FIRE BACKGROUND -->
-<div class="fire-bg" id="fireBg"></div>
-
 <header>
   <div class="logo">Spicy Masti</div>
 </header>
 
-<!-- 🔍 STICKY SEARCH -->
+<!-- STICKY SEARCH -->
 <div class="search-wrapper">
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="searchMenu()">
@@ -176,6 +138,7 @@ footer {
 <!-- MENU -->
 <section class="menu" id="menu">
 
+  <!-- Burger -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Burger (4)</span><span class="arrow">▼</span>
@@ -188,6 +151,7 @@ footer {
     </div>
   </div>
 
+  <!-- Maggi -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Maggi (6)</span><span class="arrow">▼</span>
@@ -202,6 +166,7 @@ footer {
     </div>
   </div>
 
+  <!-- Snacks -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Snacks (7)</span><span class="arrow">▼</span>
@@ -217,6 +182,42 @@ footer {
     </div>
   </div>
 
+  <!-- Shakes -->
+  <div class="category">
+    <div class="category-title" onclick="toggleCategory(this)">
+      <span>Shakes (5)</span><span class="arrow">▼</span>
+    </div>
+    <div class="items">
+      <div class="menu-item"><span>Iced Americano</span><span>₹80</span></div>
+      <div class="menu-item"><span>Cold Coffee Shake</span><span>₹100</span></div>
+      <div class="menu-item"><span>Oreo Shake</span><span>₹110</span></div>
+      <div class="menu-item"><span>KitKat Shake</span><span>₹110</span></div>
+      <div class="menu-item"><span>Chocolate Shake</span><span>₹120</span></div>
+    </div>
+  </div>
+
+  <!-- Soup -->
+  <div class="category">
+    <div class="category-title" onclick="toggleCategory(this)">
+      <span>Soup (3)</span><span class="arrow">▼</span>
+    </div>
+    <div class="items">
+      <div class="menu-item"><span>Mix Veg Soup</span><span>₹50</span></div>
+      <div class="menu-item"><span>Hot & Sour Soup</span><span>₹50</span></div>
+      <div class="menu-item"><span>Tomato Soup</span><span>₹50</span></div>
+    </div>
+  </div>
+
+  <!-- Dessert -->
+  <div class="category">
+    <div class="category-title" onclick="toggleCategory(this)">
+      <span>Dessert (1)</span><span class="arrow">▼</span>
+    </div>
+    <div class="items">
+      <div class="menu-item"><span>Gulab Jamun (3 pcs)</span><span>₹50</span></div>
+    </div>
+  </div>
+
 </section>
 
 <footer>
@@ -224,18 +225,6 @@ footer {
 </footer>
 
 <script>
-/* 🔥 FIRE DOT GENERATOR */
-const fireBg = document.getElementById("fireBg");
-for (let i = 0; i < 40; i++) {
-  const dot = document.createElement("div");
-  dot.className = "fire-dot";
-  dot.style.left = Math.random() * 100 + "%";
-  dot.style.animationDuration = (4 + Math.random() * 4) + "s";
-  dot.style.background = ["#ff0000", "#ff6a00", "#ffcc00"][Math.floor(Math.random()*3)];
-  fireBg.appendChild(dot);
-}
-
-/* CATEGORY TOGGLE */
 function toggleCategory(title) {
   const items = title.nextElementSibling;
   const arrow = title.querySelector(".arrow");
@@ -249,7 +238,6 @@ function toggleCategory(title) {
   }
 }
 
-/* SEARCH */
 function searchMenu() {
   const input = document.getElementById("searchInput").value.toLowerCase();
   const menu = document.getElementById("menu");
