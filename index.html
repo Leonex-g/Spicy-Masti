@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Spicy Masti</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -13,6 +13,38 @@ body {
   font-family: 'Poppins', sans-serif;
   background: #ffffff;
   color: #222;
+}
+
+/* INTRO SCREEN */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOut 1s ease forwards;
+  animation-delay: 2.5s;
+}
+
+.intro-logo {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #000;
+  text-shadow:
+    0 4px 0 rgba(0,0,0,0.25),
+    0 8px 18px rgba(0,0,0,0.25);
+  animation: zoomIn 2.2s ease forwards;
+}
+
+@keyframes zoomIn {
+  0% { opacity: 0; transform: scale(0.6); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
 }
 
 /* LOGO */
@@ -25,30 +57,28 @@ header {
   font-size: 2.6rem;
   font-weight: 800;
   color: #000;
-  text-shadow: 0 3px 8px rgba(0,0,0,0.18);
+  text-shadow:
+    0 3px 0 rgba(0,0,0,0.25),
+    0 6px 14px rgba(0,0,0,0.25);
 }
 
 /* ACTION BUTTONS */
 .action-buttons {
   display: flex;
-  justify-content: center;
   gap: 14px;
   padding: 0 16px 14px;
 }
 
 .action-buttons a {
   flex: 1;
-  max-width: 200px;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px;
   border-radius: 14px;
-  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   color: #000;
-  background: #eee;
   box-shadow: 0 6px 0 rgba(0,0,0,0.18), 0 10px 18px rgba(0,0,0,0.15);
-  transition: all 0.15s ease;
+  transition: 0.15s;
 }
 
 .action-buttons a:active {
@@ -64,31 +94,19 @@ header {
   position: sticky;
   top: 0;
   background: #fff;
-  z-index: 10;
+  z-index: 5;
   padding: 12px 16px;
   border-bottom: 1px solid #eee;
-}
-
-.search-box {
-  display: flex;
-  justify-content: center;
 }
 
 .search-box input {
   width: 100%;
   max-width: 420px;
-  padding: 16px 18px;
-  font-size: 1rem;
-  border-radius: 16px;
+  padding: 14px 16px;
+  border-radius: 14px;
   border: 1px solid #ccc;
-  outline: none;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.12);
-  transition: all 0.15s ease;
-}
-
-.search-box input:focus {
-  transform: translateY(2px);
-  box-shadow: 0 3px 0 rgba(0,0,0,0.18);
+  box-shadow: 0 6px 0 rgba(0,0,0,0.12), 0 10px 18px rgba(0,0,0,0.12);
+  font-size: 1rem;
 }
 
 /* MENU */
@@ -97,56 +115,32 @@ header {
 }
 
 .category {
-  margin-bottom: 26px;
+  margin-bottom: 22px;
 }
 
-/* 3D CATEGORY HEADER */
 .category-title {
   position: sticky;
-  top: 78px;
+  top: 74px;
   background: #fff;
-  z-index: 5;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   font-size: 1.15rem;
   font-weight: 600;
-  padding: 14px 16px;
-  border-radius: 14px;
+  padding: 10px 0;
+  border-bottom: 2px solid #f2f2f2;
   cursor: pointer;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.15), 0 10px 18px rgba(0,0,0,0.12);
-  transition: all 0.15s ease;
 }
 
-.category-title:active {
-  transform: translateY(4px);
-  box-shadow: 0 2px 0 rgba(0,0,0,0.18);
-}
-
-.arrow {
-  font-size: 1.3rem;
-}
-
-/* ITEMS */
 .items {
-  margin-top: 14px;
+  margin-top: 8px;
 }
 
 .menu-item {
-  background: #fff;
   display: flex;
   justify-content: space-between;
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  border-radius: 14px;
+  padding: 10px 0;
+  border-bottom: 1px dashed #ddd;
   font-size: 0.95rem;
-  box-shadow: 0 5px 0 rgba(0,0,0,0.12), 0 10px 16px rgba(0,0,0,0.1);
-  transition: all 0.15s ease;
-}
-
-.menu-item:active {
-  transform: translateY(3px);
-  box-shadow: 0 2px 0 rgba(0,0,0,0.15);
 }
 
 /* SEARCH RESULTS */
@@ -176,6 +170,11 @@ footer {
 
 <body>
 
+<!-- INTRO -->
+<div id="intro">
+  <div class="intro-logo">Spicy Masti</div>
+</div>
+
 <header>
   <div class="logo">Spicy Masti</div>
 </header>
@@ -186,56 +185,22 @@ footer {
 </div>
 
 <div class="search-wrapper">
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="searchMenu()">
-  </div>
+  <input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="searchMenu()">
 </div>
 
 <section id="searchResults"></section>
 
 <section class="menu" id="menu">
 
-  <!-- BURGER -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
-      <span>Burger (4)</span><span class="arrow">▼</span>
+      <span>Burger (4)</span><span>▼</span>
     </div>
     <div class="items">
       <div class="menu-item"><span>Aloo Tikki Burger</span><span>₹40</span></div>
       <div class="menu-item"><span>Cheese Burger</span><span>₹55</span></div>
       <div class="menu-item"><span>Double Tikki Burger</span><span>₹60</span></div>
       <div class="menu-item"><span>French Burger</span><span>₹80</span></div>
-    </div>
-  </div>
-
-  <!-- MAGGI -->
-  <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">
-      <span>Maggi (6)</span><span class="arrow">▼</span>
-    </div>
-    <div class="items">
-      <div class="menu-item"><span>Masala Maggi</span><span>₹30</span></div>
-      <div class="menu-item"><span>Double Masala Maggi</span><span>₹35</span></div>
-      <div class="menu-item"><span>Veggie Maggi</span><span>₹45</span></div>
-      <div class="menu-item"><span>Cheese Maggi</span><span>₹60</span></div>
-      <div class="menu-item"><span>Chilli Hot Garlic Maggi</span><span>₹70</span></div>
-      <div class="menu-item"><span>Maggi Delight</span><span>₹80</span></div>
-    </div>
-  </div>
-
-  <!-- SNACKS -->
-  <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">
-      <span>Snacks (7)</span><span class="arrow">▼</span>
-    </div>
-    <div class="items">
-      <div class="menu-item"><span>Plain Sweetcorn</span><span>₹40</span></div>
-      <div class="menu-item"><span>Classic Sweetcorn</span><span>₹50</span></div>
-      <div class="menu-item"><span>Butter Masala Sweetcorn</span><span>₹50</span></div>
-      <div class="menu-item"><span>Tandoori Sweetcorn</span><span>₹60</span></div>
-      <div class="menu-item"><span>French Fries</span><span>₹80</span></div>
-      <div class="menu-item"><span>Peri Peri Fries</span><span>₹90</span></div>
-      <div class="menu-item"><span>Cheese Fries</span><span>₹120</span></div>
     </div>
   </div>
 
@@ -246,7 +211,7 @@ footer {
 <script>
 function toggleCategory(title) {
   const items = title.nextElementSibling;
-  const arrow = title.querySelector(".arrow");
+  const arrow = title.querySelector("span:last-child");
   if (items.style.display === "none") {
     items.style.display = "block";
     arrow.textContent = "▼";
@@ -257,20 +222,18 @@ function toggleCategory(title) {
 }
 
 function searchMenu() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
-  const menu = document.getElementById("menu");
-  const results = document.getElementById("searchResults");
-  results.innerHTML = "";
+  const input = searchInput.value.toLowerCase();
+  searchResults.innerHTML = "";
   if (!input) {
     menu.style.display = "block";
-    results.style.display = "none";
+    searchResults.style.display = "none";
     return;
   }
   menu.style.display = "none";
-  results.style.display = "block";
+  searchResults.style.display = "block";
   document.querySelectorAll(".menu-item").forEach(item => {
     if (item.innerText.toLowerCase().includes(input)) {
-      results.appendChild(item.cloneNode(true));
+      searchResults.appendChild(item.cloneNode(true));
     }
   });
 }
