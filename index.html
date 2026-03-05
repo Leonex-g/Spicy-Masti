@@ -28,6 +28,36 @@ header {
   text-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
+/* ACTION BUTTONS */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 16px 12px;
+}
+
+.action-buttons a {
+  flex: 1;
+  max-width: 200px;
+  text-align: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #000;
+}
+
+/* Call Button */
+.call-btn {
+  background: #b8f2c2; /* light green */
+}
+
+/* Map Button */
+.map-btn {
+  background: #cce6ff; /* light blue */
+}
+
 /* STICKY SEARCH */
 .search-wrapper {
   position: sticky;
@@ -115,6 +145,10 @@ footer {
     max-width: 720px;
     margin: auto;
   }
+
+  .action-buttons a {
+    max-width: 220px;
+  }
 }
 </style>
 </head>
@@ -124,6 +158,12 @@ footer {
 <header>
   <div class="logo">Spicy Masti</div>
 </header>
+
+<!-- CALL & MAP BUTTONS -->
+<div class="action-buttons">
+  <a href="tel:7290945445" class="call-btn">Contact Us</a>
+  <a href="https://maps.app.goo.gl/RL4HiaMXgbRnvpVm8" target="_blank" class="map-btn">View Location</a>
+</div>
 
 <!-- STICKY SEARCH -->
 <div class="search-wrapper">
@@ -138,7 +178,6 @@ footer {
 <!-- MENU -->
 <section class="menu" id="menu">
 
-  <!-- Burger -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Burger (4)</span><span class="arrow">▼</span>
@@ -151,7 +190,6 @@ footer {
     </div>
   </div>
 
-  <!-- Maggi -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Maggi (6)</span><span class="arrow">▼</span>
@@ -166,7 +204,6 @@ footer {
     </div>
   </div>
 
-  <!-- Snacks -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Snacks (7)</span><span class="arrow">▼</span>
@@ -182,7 +219,6 @@ footer {
     </div>
   </div>
 
-  <!-- Shakes -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Shakes (5)</span><span class="arrow">▼</span>
@@ -196,7 +232,6 @@ footer {
     </div>
   </div>
 
-  <!-- Soup -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Soup (3)</span><span class="arrow">▼</span>
@@ -208,7 +243,6 @@ footer {
     </div>
   </div>
 
-  <!-- Dessert -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">
       <span>Dessert (1)</span><span class="arrow">▼</span>
