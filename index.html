@@ -15,7 +15,7 @@ body {
   color: #222;
 }
 
-/* 🔥 LOGO */
+/* LOGO */
 header {
   text-align: center;
   padding: 28px 16px;
@@ -24,29 +24,11 @@ header {
 .logo {
   font-size: 2.6rem;
   font-weight: 800;
-  color: #ff2e00;
-  text-shadow:
-    0 0 8px #ff6a00,
-    0 0 16px #ff2e00,
-    0 0 24px #ff9900;
-  animation: fireGlow 1.5s infinite alternate;
+  color: #000;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-@keyframes fireGlow {
-  from {
-    text-shadow:
-      0 0 6px #ff4500,
-      0 0 12px #ff6a00;
-  }
-  to {
-    text-shadow:
-      0 0 12px #ff0000,
-      0 0 24px #ff9900,
-      0 0 36px #ff4500;
-  }
-}
-
-/* 🔍 SEARCH */
+/* SEARCH */
 .search-box {
   padding: 16px;
 }
@@ -60,19 +42,19 @@ header {
   outline: none;
 }
 
-/* 📂 MENU */
+/* MENU */
 .menu {
   padding: 16px;
 }
 
 .category {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .category-title {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #d62828;
+  color: #111;
   border-bottom: 2px solid #f2f2f2;
   padding: 8px 0;
   cursor: pointer;
@@ -90,12 +72,13 @@ header {
   font-size: 0.95rem;
 }
 
-/* 🔎 SEARCH RESULT */
+/* SEARCH RESULTS */
 #searchResults {
   padding: 16px;
   display: none;
 }
 
+/* FOOTER */
 footer {
   text-align: center;
   padding: 18px;
@@ -130,6 +113,7 @@ footer {
 <!-- MENU -->
 <section class="menu" id="menu">
 
+  <!-- Burger -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">Burger</div>
     <div class="items">
@@ -140,6 +124,7 @@ footer {
     </div>
   </div>
 
+  <!-- Maggi -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">Maggi</div>
     <div class="items">
@@ -152,6 +137,43 @@ footer {
     </div>
   </div>
 
+  <!-- Snacks -->
+  <div class="category">
+    <div class="category-title" onclick="toggleCategory(this)">Snacks</div>
+    <div class="items">
+      <div class="menu-item"><span>Plain Sweetcorn</span><span>₹40</span></div>
+      <div class="menu-item"><span>Classic Sweetcorn</span><span>₹50</span></div>
+      <div class="menu-item"><span>Butter Masala Sweetcorn</span><span>₹50</span></div>
+      <div class="menu-item"><span>Tandoori Sweetcorn</span><span>₹60</span></div>
+      <div class="menu-item"><span>French Fries</span><span>₹80</span></div>
+      <div class="menu-item"><span>Peri Peri Fries</span><span>₹90</span></div>
+      <div class="menu-item"><span>Cheese Fries</span><span>₹120</span></div>
+    </div>
+  </div>
+
+  <!-- Shakes -->
+  <div class="category">
+    <div class="category-title" onclick="toggleCategory(this)">Shakes</div>
+    <div class="items">
+      <div class="menu-item"><span>Iced Americano</span><span>₹80</span></div>
+      <div class="menu-item"><span>Cold Coffee Shake</span><span>₹100</span></div>
+      <div class="menu-item"><span>Oreo Shake</span><span>₹110</span></div>
+      <div class="menu-item"><span>KitKat Shake</span><span>₹110</span></div>
+      <div class="menu-item"><span>Chocolate Shake</span><span>₹120</span></div>
+    </div>
+  </div>
+
+  <!-- Soup -->
+  <div class="category">
+    <div class="category-title" onclick="toggleCategory(this)">Soup</div>
+    <div class="items">
+      <div class="menu-item"><span>Mix Veg Soup</span><span>₹50</span></div>
+      <div class="menu-item"><span>Hot & Sour Soup</span><span>₹50</span></div>
+      <div class="menu-item"><span>Tomato Soup</span><span>₹50</span></div>
+    </div>
+  </div>
+
+  <!-- Dessert -->
   <div class="category">
     <div class="category-title" onclick="toggleCategory(this)">Dessert</div>
     <div class="items">
@@ -175,6 +197,7 @@ function searchMenu() {
   const input = document.getElementById("searchInput").value.toLowerCase();
   const menu = document.getElementById("menu");
   const results = document.getElementById("searchResults");
+
   results.innerHTML = "";
 
   if (input === "") {
@@ -186,9 +209,7 @@ function searchMenu() {
   menu.style.display = "none";
   results.style.display = "block";
 
-  const items = document.querySelectorAll(".menu-item");
-
-  items.forEach(item => {
+  document.querySelectorAll(".menu-item").forEach(item => {
     if (item.innerText.toLowerCase().includes(input)) {
       results.appendChild(item.cloneNode(true));
     }
