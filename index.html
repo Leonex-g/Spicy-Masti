@@ -15,7 +15,7 @@ body {
   color: #222;
 }
 
-/* INTRO SCREEN */
+/* INTRO */
 #intro {
   position: fixed;
   inset: 0;
@@ -32,15 +32,13 @@ body {
   font-size: 3rem;
   font-weight: 800;
   color: #000;
-  text-shadow:
-    0 4px 0 rgba(0,0,0,0.25),
-    0 8px 18px rgba(0,0,0,0.25);
+  text-shadow: 0 4px 0 rgba(0,0,0,0.25), 0 10px 20px rgba(0,0,0,0.25);
   animation: zoomIn 2.2s ease forwards;
 }
 
 @keyframes zoomIn {
-  0% { opacity: 0; transform: scale(0.6); }
-  100% { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes fadeOut {
@@ -50,19 +48,17 @@ body {
 /* LOGO */
 header {
   text-align: center;
-  padding: 28px 16px;
+  padding: 26px 16px;
 }
 
 .logo {
   font-size: 2.6rem;
   font-weight: 800;
   color: #000;
-  text-shadow:
-    0 3px 0 rgba(0,0,0,0.25),
-    0 6px 14px rgba(0,0,0,0.25);
+  text-shadow: 0 3px 0 rgba(0,0,0,0.25), 0 8px 18px rgba(0,0,0,0.25);
 }
 
-/* ACTION BUTTONS */
+/* BUTTONS */
 .action-buttons {
   display: flex;
   gap: 14px;
@@ -78,18 +74,12 @@ header {
   text-decoration: none;
   color: #000;
   box-shadow: 0 6px 0 rgba(0,0,0,0.18), 0 10px 18px rgba(0,0,0,0.15);
-  transition: 0.15s;
-}
-
-.action-buttons a:active {
-  transform: translateY(4px);
-  box-shadow: 0 2px 0 rgba(0,0,0,0.2);
 }
 
 .call-btn { background: #00fa9a; }
 .map-btn { background: #48d1cc; }
 
-/* STICKY SEARCH */
+/* SEARCH (PREVIOUS VERSION) */
 .search-wrapper {
   position: sticky;
   top: 0;
@@ -99,14 +89,20 @@ header {
   border-bottom: 1px solid #eee;
 }
 
+.search-box {
+  display: flex;
+  justify-content: center;
+}
+
 .search-box input {
   width: 100%;
   max-width: 420px;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid #ccc;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.12), 0 10px 18px rgba(0,0,0,0.12);
+  padding: 16px 18px;
   font-size: 1rem;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  outline: none;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.12);
 }
 
 /* MENU */
@@ -115,25 +111,23 @@ header {
 }
 
 .category {
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
 .category-title {
   position: sticky;
-  top: 74px;
+  top: 72px;
   background: #fff;
   display: flex;
   justify-content: space-between;
-  font-size: 1.15rem;
   font-weight: 600;
+  font-size: 1.15rem;
   padding: 10px 0;
   border-bottom: 2px solid #f2f2f2;
   cursor: pointer;
 }
 
-.items {
-  margin-top: 8px;
-}
+.items { margin-top: 8px; }
 
 .menu-item {
   display: flex;
@@ -158,7 +152,6 @@ footer {
   border-top: 1px solid #eee;
 }
 
-/* DESKTOP */
 @media (min-width: 768px) {
   .menu, #searchResults {
     max-width: 720px;
@@ -170,7 +163,6 @@ footer {
 
 <body>
 
-<!-- INTRO -->
 <div id="intro">
   <div class="intro-logo">Spicy Masti</div>
 </div>
@@ -185,24 +177,94 @@ footer {
 </div>
 
 <div class="search-wrapper">
-  <input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="searchMenu()">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="searchMenu()">
+  </div>
 </div>
 
 <section id="searchResults"></section>
 
 <section class="menu" id="menu">
 
-  <div class="category">
-    <div class="category-title" onclick="toggleCategory(this)">
-      <span>Burger (4)</span><span>▼</span>
-    </div>
-    <div class="items">
-      <div class="menu-item"><span>Aloo Tikki Burger</span><span>₹40</span></div>
-      <div class="menu-item"><span>Cheese Burger</span><span>₹55</span></div>
-      <div class="menu-item"><span>Double Tikki Burger</span><span>₹60</span></div>
-      <div class="menu-item"><span>French Burger</span><span>₹80</span></div>
-    </div>
+<!-- BURGER -->
+<div class="category">
+  <div class="category-title" onclick="toggleCategory(this)">
+    <span>Burger (4)</span><span>▼</span>
   </div>
+  <div class="items">
+    <div class="menu-item"><span>Aloo Tikki Burger</span><span>₹40</span></div>
+    <div class="menu-item"><span>Cheese Burger</span><span>₹55</span></div>
+    <div class="menu-item"><span>Double Tikki Burger</span><span>₹60</span></div>
+    <div class="menu-item"><span>French Burger</span><span>₹80</span></div>
+  </div>
+</div>
+
+<!-- MAGGI -->
+<div class="category">
+  <div class="category-title" onclick="toggleCategory(this)">
+    <span>Maggi (6)</span><span>▼</span>
+  </div>
+  <div class="items">
+    <div class="menu-item"><span>Masala Maggi</span><span>₹30</span></div>
+    <div class="menu-item"><span>Double Masala Maggi</span><span>₹35</span></div>
+    <div class="menu-item"><span>Veggie Maggi</span><span>₹45</span></div>
+    <div class="menu-item"><span>Cheese Maggi</span><span>₹60</span></div>
+    <div class="menu-item"><span>Chilli Hot Garlic Maggi</span><span>₹70</span></div>
+    <div class="menu-item"><span>Maggi Delight</span><span>₹80</span></div>
+  </div>
+</div>
+
+<!-- SNACKS -->
+<div class="category">
+  <div class="category-title" onclick="toggleCategory(this)">
+    <span>Snacks (7)</span><span>▼</span>
+  </div>
+  <div class="items">
+    <div class="menu-item"><span>Plain Sweetcorn</span><span>₹40</span></div>
+    <div class="menu-item"><span>Classic Sweetcorn</span><span>₹50</span></div>
+    <div class="menu-item"><span>Butter Masala Sweetcorn</span><span>₹50</span></div>
+    <div class="menu-item"><span>Tandoori Sweetcorn</span><span>₹60</span></div>
+    <div class="menu-item"><span>French Fries</span><span>₹80</span></div>
+    <div class="menu-item"><span>Peri Peri Fries</span><span>₹90</span></div>
+    <div class="menu-item"><span>Cheese Fries</span><span>₹120</span></div>
+  </div>
+</div>
+
+<!-- SHAKES -->
+<div class="category">
+  <div class="category-title" onclick="toggleCategory(this)">
+    <span>Shakes (5)</span><span>▼</span>
+  </div>
+  <div class="items">
+    <div class="menu-item"><span>Iced Americano</span><span>₹80</span></div>
+    <div class="menu-item"><span>Cold Coffee Shake</span><span>₹100</span></div>
+    <div class="menu-item"><span>Oreo Shake</span><span>₹110</span></div>
+    <div class="menu-item"><span>KitKat Shake</span><span>₹110</span></div>
+    <div class="menu-item"><span>Chocolate Shake</span><span>₹120</span></div>
+  </div>
+</div>
+
+<!-- SOUP -->
+<div class="category">
+  <div class="category-title" onclick="toggleCategory(this)">
+    <span>Soup (3)</span><span>▼</span>
+  </div>
+  <div class="items">
+    <div class="menu-item"><span>Mix Veg Soup</span><span>₹50</span></div>
+    <div class="menu-item"><span>Hot & Sour Soup</span><span>₹50</span></div>
+    <div class="menu-item"><span>Tomato Soup</span><span>₹50</span></div>
+  </div>
+</div>
+
+<!-- DESSERT -->
+<div class="category">
+  <div class="category-title" onclick="toggleCategory(this)">
+    <span>Dessert (1)</span><span>▼</span>
+  </div>
+  <div class="items">
+    <div class="menu-item"><span>Gulab Jamun (3 pcs)</span><span>₹50</span></div>
+  </div>
+</div>
 
 </section>
 
