@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Restaurant Settings</title>
+<style>
+
+body{
+font-family: Arial;
+background:#111;
+color:white;
+padding:40px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+background:#1c1c1c;
+padding:30px;
+border-radius:10px;
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+}
+
+label{
+display:block;
+margin-top:15px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:5px;
+border:none;
+border-radius:6px;
+}
+
+button{
+margin-top:20px;
+padding:12px;
+width:100%;
+border:none;
+border-radius:8px;
+background:#00fa9a;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#00d084;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Website Settings</h2>
+
+<label>Restaurant Name</label>
+<input type="text" id="restaurantName">
+
+<label>Phone Number</label>
+<input type="text" id="phone">
+
+<label>Google Map Link</label>
+<input type="text" id="map">
+
+<label>Delivery Charge per KM (₹)</label>
+<input type="number" id="delivery">
+
+<label>Call Button Color</label>
+<input type="color" id="callColor">
+
+<label>Map Button Color</label>
+<input type="color" id="mapColor">
+
+<button onclick="saveSettings()">Save Settings</button>
+
+</div>
+
+<script>
+
+function saveSettings(){
+
+let settings = {
+
+restaurantName: document.getElementById("restaurantName").value,
+phone: document.getElementById("phone").value,
+map: document.getElementById("map").value,
+delivery: document.getElementById("delivery").value,
+callColor: document.getElementById("callColor").value,
+mapColor: document.getElementById("mapColor").value
+
+};
+
+localStorage.setItem("restaurantSettings", JSON.stringify(settings));
+
+alert("Settings Saved!");
+
+}
+
+function loadSettings(){
+
+let data = localStorage.getItem("restaurantSettings");
+
+if(data){
+
+let settings = JSON.parse(data);
+
+document.getElementById("restaurantName").value = settings.restaurantName;
+document.getElementById("phone").value = settings.phone;
+document.getElementById("map").value = settings.map;
+document.getElementById("delivery").value = settings.delivery;
+document.getElementById("callColor").value = settings.callColor;
+document.getElementById("mapColor").value = settings.mapColor;
+
+}
+
+}
+
+loadSettings();
+
+</script>
+
+</body>
+</html>
