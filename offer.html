@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offers</title>
 
+<style>
+
+body{
+margin:0;
+padding:0;
+font-family: Arial, sans-serif;
+background: linear-gradient(135deg,#1f1f1f,#000000);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+text-align:center;
+}
+
+.container{
+padding:20px;
+}
+
+.icon{
+font-size:70px;
+margin-bottom:15px;
+}
+
+h1{
+font-size:24px;
+margin-bottom:10px;
+}
+
+p{
+font-size:16px;
+opacity:0.8;
+margin-bottom:25px;
+}
+
+button{
+background:#ff4d4d;
+border:none;
+padding:12px 25px;
+font-size:16px;
+border-radius:25px;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff1a1a;
+transform:scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="icon">🎁</div>
+
+<h1>No Offers Available</h1>
+
+<p>Currently there are no active offers.  
+Check back later for exciting deals!</p>
+
+<button onclick="history.back()">Back to Menu</button>
+
+</div>
+
+</body>
+</html>
