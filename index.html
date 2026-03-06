@@ -1,165 +1,179 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Spicy Masti</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #ffffff;
-  color: #222;
+
+body{
+margin:0;
+font-family:Poppins;
+background:white;
+padding-bottom:70px;
 }
 
-/* INTRO */
-#intro {
-  position: fixed;
-  inset: 0;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  animation: fadeOut 1s ease forwards;
-  animation-delay: 2.5s;
+/* INTRO LOGO */
+
+#intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+animation:fadeout 1s forwards;
+animation-delay:2s;
 }
 
-.intro-logo {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #000;
-  text-shadow: 0 4px 0 rgba(0,0,0,0.25), 0 10px 20px rgba(0,0,0,0.25);
-  animation: zoomIn 2.2s ease forwards;
+.intro-logo{
+font-size:42px;
+font-weight:800;
+color:black;
+text-shadow:0 6px 12px rgba(0,0,0,0.3);
+animation:zoom 2s;
 }
 
-@keyframes zoomIn {
-  from { opacity: 0; transform: scale(0.6); }
-  to { opacity: 1; transform: scale(1); }
+@keyframes zoom{
+0%{transform:scale(0.5);opacity:0}
+100%{transform:scale(1);opacity:1}
 }
 
-@keyframes fadeOut {
-  to { opacity: 0; visibility: hidden; }
+@keyframes fadeout{
+to{opacity:0;visibility:hidden}
 }
 
-/* LOGO */
-header {
-  text-align: center;
-  padding: 26px 16px;
+/* HEADER */
+
+.logo{
+text-align:center;
+font-size:34px;
+font-weight:800;
+margin:25px 0;
+text-shadow:0 6px 10px rgba(0,0,0,0.2);
 }
 
-.logo {
-  font-size: 2.6rem;
-  font-weight: 800;
-  color: #000;
-  text-shadow: 0 3px 0 rgba(0,0,0,0.25), 0 8px 18px rgba(0,0,0,0.25);
+/* ACTION BUTTONS */
+
+.action-buttons{
+display:flex;
+gap:10px;
+padding:0 16px;
+margin-bottom:12px;
 }
 
-/* BUTTONS */
-.action-buttons {
-  display: flex;
-  gap: 14px;
-  padding: 0 16px 14px;
+.action-buttons a{
+flex:1;
+text-align:center;
+padding:14px;
+border-radius:12px;
+font-weight:600;
+text-decoration:none;
+color:black;
+box-shadow:0 6px 0 rgba(0,0,0,0.2),0 10px 16px rgba(0,0,0,0.2);
 }
 
-.action-buttons a {
-  flex: 1;
-  text-align: center;
-  padding: 14px;
-  border-radius: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  color: #000;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.18), 0 10px 18px rgba(0,0,0,0.15);
+.call-btn{
+background:#00fa9a;
 }
 
-.call-btn { background: #00AB09; }
-.map-btn { background: #65B6F0; }
-
-/* SEARCH (PREVIOUS VERSION) */
-.search-wrapper {
-  position: sticky;
-  top: 0;
-  background: #fff;
-  z-index: 5;
-  padding: 12px 16px;
-  border-bottom: 1px solid #eee;
+.map-btn{
+background:#48d1cc;
 }
 
-.search-box {
-  display: flex;
-  justify-content: center;
+/* SEARCH BAR */
+
+.search-wrapper{
+position:sticky;
+top:0;
+background:white;
+padding:12px 16px;
+z-index:5;
+border-bottom:1px solid #eee;
 }
 
-.search-box input {
-  width: 100%;
-  max-width: 420px;
-  padding: 16px 18px;
-  font-size: 1rem;
-  border-radius: 16px;
-  border: 1px solid #ccc;
-  outline: none;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.12);
+.search-wrapper input{
+width:100%;
+padding:14px;
+border-radius:14px;
+border:1px solid #ccc;
+font-size:16px;
+box-shadow:0 6px 0 rgba(0,0,0,0.15),0 10px 16px rgba(0,0,0,0.15);
 }
 
 /* MENU */
-.menu {
-  padding: 16px;
+
+.menu{
+padding:16px;
 }
 
-.category {
-  margin-bottom: 24px;
+.category{
+margin-bottom:22px;
 }
 
-.category-title {
-  position: sticky;
-  top: 72px;
-  background: #fff;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  font-size: 1.15rem;
-  padding: 10px 0;
-  border-bottom: 2px solid #f2f2f2;
-  cursor: pointer;
+.category-title{
+display:flex;
+justify-content:space-between;
+font-weight:600;
+font-size:18px;
+padding:10px 0;
+border-bottom:2px solid #f0f0f0;
+cursor:pointer;
 }
 
-.items { margin-top: 8px; }
+.menu-item{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px dashed #ddd;
+font-size:15px;
+}
 
-.menu-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px dashed #ddd;
-  font-size: 0.95rem;
+/* IMAGE ITEM */
+
+.image-item{
+display:flex;
+gap:12px;
+align-items:center;
+}
+
+.food-img{
+width:70px;
+height:70px;
+border-radius:12px;
+object-fit:cover;
+}
+
+.item-info{
+display:flex;
+flex-direction:column;
+}
+
+.item-name{
+font-weight:600;
+}
+
+.item-price{
+font-size:14px;
+color:#555;
 }
 
 /* SEARCH RESULTS */
-#searchResults {
-  padding: 16px;
-  display: none;
+
+#searchResults{
+display:none;
+padding:16px;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 18px;
-  font-size: 0.8rem;
-  color: #777;
-  border-top: 1px solid #eee;
-}
-
-@media (min-width: 768px) {
-  .menu, #searchResults {
-    max-width: 720px;
-    margin: auto;
-  }
-}
-
-/* BOTTOM FIXED BUTTONS */
+/* BOTTOM BUTTONS */
 
 .bottom-buttons{
 position:fixed;
@@ -173,21 +187,18 @@ z-index:1000;
 .bottom-buttons a{
 flex:1;
 padding:16px;
-font-size:16px;
 font-weight:600;
 text-align:center;
 text-decoration:none;
-border:none;
+color:white;
 }
 
 .offer-btn{
 background:#ffa500;
-color:white;
 }
 
 .settings-btn{
 background:#444;
-color:white;
 }
 
 </style>
@@ -196,153 +207,184 @@ color:white;
 <body>
 
 <div id="intro">
-  <div class="intro-logo">Spicy Masti</div>
+<div class="intro-logo">Spicy Masti</div>
 </div>
 
-<header>
-  <div class="logo">Spicy Masti</div>
-</header>
+<div class="logo">Spicy Masti</div>
 
 <div class="action-buttons">
-  <a href="tel:7290945445" class="call-btn">📞 Contact Us</a>
-  <a href="https://maps.app.goo.gl/RL4HiaMXgbRnvpVm8" target="_blank" class="map-btn">📍 Location</a>
+<a href="tel:7290945445" class="call-btn">📞 Contact Us</a>
+<a href="https://maps.app.goo.gl/RL4HiaMXgbRnvpVm8" target="_blank" class="map-btn">📍 View Location</a>
 </div>
 
 <div class="search-wrapper">
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="searchMenu()">
-  </div>
+<input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="searchMenu()">
 </div>
 
 <section id="searchResults"></section>
 
 <section class="menu" id="menu">
 
-<!-- BURGER -->
+<!-- Burger -->
+
 <div class="category">
-  <div class="category-title" onclick="toggleCategory(this)">
-    <span>Burger (4)</span><span>▼</span>
-  </div>
-  <div class="items">
-    <div class="menu-item"><span>Aloo Tikki Burger</span><span>₹40</span></div>
-    <div class="menu-item"><span>Cheese Burger</span><span>₹55</span></div>
-    <div class="menu-item"><span>Double Tikki Burger</span><span>₹60</span></div>
-    <div class="menu-item"><span>French Burger</span><span>₹80</span></div>
-  </div>
+<div class="category-title" onclick="toggleCategory(this)">
+<span>Burger (4)</span><span>▼</span>
 </div>
 
-<!-- MAGGI -->
-<div class="category">
-  <div class="category-title" onclick="toggleCategory(this)">
-    <span>Maggi (6)</span><span>▼</span>
-  </div>
-  <div class="items">
-    <div class="menu-item"><span>Masala Maggi</span><span>₹30</span></div>
-    <div class="menu-item"><span>Double Masala Maggi</span><span>₹35</span></div>
-    <div class="menu-item"><span>Veggie Maggi</span><span>₹45</span></div>
-    <div class="menu-item"><span>Cheese Maggi</span><span>₹60</span></div>
-    <div class="menu-item"><span>Chilli Hot Garlic Maggi</span><span>₹70</span></div>
-    <div class="menu-item"><span>Maggi Delight</span><span>₹80</span></div>
-  </div>
+<div class="items">
+
+<div class="menu-item image-item">
+
+<img src="https://shorturl.at/2iJOS" class="food-img">
+
+<div class="item-info">
+<div class="item-name">Aloo Tikki Burger</div>
+<div class="item-price">₹40</div>
 </div>
 
-<!-- SNACKS -->
-<div class="category">
-  <div class="category-title" onclick="toggleCategory(this)">
-    <span>Snacks (7)</span><span>▼</span>
-  </div>
-  <div class="items">
-    <div class="menu-item"><span>Plain Sweetcorn</span><span>₹40</span></div>
-    <div class="menu-item"><span>Classic Sweetcorn</span><span>₹50</span></div>
-    <div class="menu-item"><span>Butter Masala Sweetcorn</span><span>₹50</span></div>
-    <div class="menu-item"><span>Tandoori Sweetcorn</span><span>₹60</span></div>
-    <div class="menu-item"><span>French Fries</span><span>₹80</span></div>
-    <div class="menu-item"><span>Peri Peri Fries</span><span>₹90</span></div>
-    <div class="menu-item"><span>Cheese Fries</span><span>₹120</span></div>
-  </div>
 </div>
 
-<!-- SHAKES -->
-<div class="category">
-  <div class="category-title" onclick="toggleCategory(this)">
-    <span>Shakes (5)</span><span>▼</span>
-  </div>
-  <div class="items">
-    <div class="menu-item"><span>Iced Americano</span><span>₹80</span></div>
-    <div class="menu-item"><span>Cold Coffee Shake</span><span>₹100</span></div>
-    <div class="menu-item"><span>Oreo Shake</span><span>₹110</span></div>
-    <div class="menu-item"><span>KitKat Shake</span><span>₹110</span></div>
-    <div class="menu-item"><span>Chocolate Shake</span><span>₹120</span></div>
-  </div>
+<div class="menu-item"><span>Cheese Burger</span><span>₹55</span></div>
+<div class="menu-item"><span>Double Tikki Burger</span><span>₹60</span></div>
+<div class="menu-item"><span>French Burger</span><span>₹80</span></div>
+
+</div>
 </div>
 
-<!-- SOUP -->
+<!-- Maggi -->
+
 <div class="category">
-  <div class="category-title" onclick="toggleCategory(this)">
-    <span>Soup (3)</span><span>▼</span>
-  </div>
-  <div class="items">
-    <div class="menu-item"><span>Mix Veg Soup</span><span>₹50</span></div>
-    <div class="menu-item"><span>Hot & Sour Soup</span><span>₹50</span></div>
-    <div class="menu-item"><span>Tomato Soup</span><span>₹50</span></div>
-  </div>
+<div class="category-title" onclick="toggleCategory(this)">
+<span>Maggi (6)</span><span>▼</span>
 </div>
 
-<!-- DESSERT -->
+<div class="items">
+
+<div class="menu-item"><span>Masala Maggi</span><span>₹30</span></div>
+<div class="menu-item"><span>Double Masala Maggi</span><span>₹35</span></div>
+<div class="menu-item"><span>Veggie Maggi</span><span>₹45</span></div>
+<div class="menu-item"><span>Cheese Maggi</span><span>₹60</span></div>
+<div class="menu-item"><span>Chilli Hot Garlic Maggi</span><span>₹70</span></div>
+<div class="menu-item"><span>Maggi Delight</span><span>₹80</span></div>
+
+</div>
+</div>
+
+<!-- Snacks -->
+
 <div class="category">
-  <div class="category-title" onclick="toggleCategory(this)">
-    <span>Dessert (1)</span><span>▼</span>
-  </div>
-  <div class="items">
-    <div class="menu-item"><span>Gulab Jamun (3 pcs)</span><span>₹50</span></div>
-  </div>
+<div class="category-title" onclick="toggleCategory(this)">
+<span>Snacks (7)</span><span>▼</span>
+</div>
+
+<div class="items">
+
+<div class="menu-item"><span>Plain Sweetcorn</span><span>₹40</span></div>
+<div class="menu-item"><span>Classic Sweetcorn</span><span>₹50</span></div>
+<div class="menu-item"><span>Butter Masala Sweetcorn</span><span>₹50</span></div>
+<div class="menu-item"><span>Tandoori Sweetcorn</span><span>₹60</span></div>
+<div class="menu-item"><span>French Fries</span><span>₹80</span></div>
+<div class="menu-item"><span>Peri Peri Fries</span><span>₹90</span></div>
+<div class="menu-item"><span>Cheese Fries</span><span>₹120</span></div>
+
+</div>
+</div>
+
+<!-- Shakes -->
+
+<div class="category">
+<div class="category-title" onclick="toggleCategory(this)">
+<span>Shakes (5)</span><span>▼</span>
+</div>
+
+<div class="items">
+
+<div class="menu-item"><span>Iced Americano</span><span>₹80</span></div>
+<div class="menu-item"><span>Cold Coffee Shake</span><span>₹100</span></div>
+<div class="menu-item"><span>Oreo Shake</span><span>₹110</span></div>
+<div class="menu-item"><span>KitKat Shake</span><span>₹110</span></div>
+<div class="menu-item"><span>Chocolate Shake</span><span>₹120</span></div>
+
+</div>
+</div>
+
+<!-- Soup -->
+
+<div class="category">
+<div class="category-title" onclick="toggleCategory(this)">
+<span>Soup (3)</span><span>▼</span>
+</div>
+
+<div class="items">
+
+<div class="menu-item"><span>Mix Veg Soup</span><span>₹50</span></div>
+<div class="menu-item"><span>Hot & Sour Soup</span><span>₹50</span></div>
+<div class="menu-item"><span>Tomato Soup</span><span>₹50</span></div>
+
+</div>
+</div>
+
+<!-- Desert -->
+
+<div class="category">
+<div class="category-title" onclick="toggleCategory(this)">
+<span>Deserts (1)</span><span>▼</span>
+</div>
+
+<div class="items">
+
+<div class="menu-item"><span>Gulab Jamun 3pcs</span><span>₹50</span></div>
+
+</div>
 </div>
 
 </section>
 
 <div class="bottom-buttons">
-
-<div class="bottom-buttons">
-
 <a href="offer.html" class="offer-btn">🏷 Offers</a>
-
 <a href="Setting.html" class="settings-btn">⚙ Settings</a>
-
 </div>
-
-</div>
-
-<footer>© 2026 Spicy Masti</footer>
 
 <script>
-function toggleCategory(title) {
-  const items = title.nextElementSibling;
-  const arrow = title.querySelector("span:last-child");
-  if (items.style.display === "none") {
-    items.style.display = "block";
-    arrow.textContent = "▼";
-  } else {
-    items.style.display = "none";
-    arrow.textContent = "▲";
-  }
+
+function toggleCategory(el){
+const items=el.nextElementSibling;
+const arrow=el.querySelector("span:last-child");
+
+if(items.style.display==="none"){
+items.style.display="block";
+arrow.textContent="▼";
+}else{
+items.style.display="none";
+arrow.textContent="▲";
+}
 }
 
-function searchMenu() {
-  const input = searchInput.value.toLowerCase();
-  searchResults.innerHTML = "";
-  if (!input) {
-    menu.style.display = "block";
-    searchResults.style.display = "none";
-    return;
-  }
-  menu.style.display = "none";
-  searchResults.style.display = "block";
-  document.querySelectorAll(".menu-item").forEach(item => {
-    if (item.innerText.toLowerCase().includes(input)) {
-      searchResults.appendChild(item.cloneNode(true));
-    }
-  });
+function searchMenu(){
+
+const input=document.getElementById("searchInput").value.toLowerCase();
+const results=document.getElementById("searchResults");
+const menu=document.getElementById("menu");
+
+results.innerHTML="";
+
+if(input===""){
+menu.style.display="block";
+results.style.display="none";
+return;
 }
+
+menu.style.display="none";
+results.style.display="block";
+
+document.querySelectorAll(".menu-item").forEach(item=>{
+if(item.innerText.toLowerCase().includes(input)){
+results.appendChild(item.cloneNode(true));
+}
+});
+}
+
 </script>
 
 </body>
