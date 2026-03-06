@@ -170,13 +170,14 @@ display:flex;
 z-index:1000;
 }
 
-.bottom-buttons button{
+.bottom-buttons a{
 flex:1;
 padding:16px;
 font-size:16px;
 font-weight:600;
+text-align:center;
+text-decoration:none;
 border:none;
-cursor:pointer;
 }
 
 .offer-btn{
@@ -188,7 +189,6 @@ color:white;
 background:#444;
 color:white;
 }
-
 
 </style>
 </head>
@@ -302,9 +302,13 @@ color:white;
 
 <div class="bottom-buttons">
 
-<button class="offer-btn">🏷 Offers</button>
+<div class="bottom-buttons">
 
-<button class="settings-btn">⚙ Settings</button>
+<a href="offer.html" class="offer-btn">🏷 Offers</a>
+
+<a href="Setting.html" class="settings-btn">⚙ Settings</a>
+
+</div>
 
 </div>
 
