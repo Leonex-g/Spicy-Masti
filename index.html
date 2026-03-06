@@ -158,6 +158,38 @@ footer {
     margin: auto;
   }
 }
+
+/* BOTTOM FIXED BUTTONS */
+
+.bottom-buttons{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+display:flex;
+z-index:1000;
+}
+
+.bottom-buttons button{
+flex:1;
+padding:16px;
+font-size:16px;
+font-weight:600;
+border:none;
+cursor:pointer;
+}
+
+.offer-btn{
+background:#ffa500;
+color:white;
+}
+
+.settings-btn{
+background:#444;
+color:white;
+}
+
+
 </style>
 </head>
 
@@ -267,6 +299,14 @@ footer {
 </div>
 
 </section>
+
+<div class="bottom-buttons">
+
+<button class="offer-btn">🏷 Offers</button>
+
+<button class="settings-btn">⚙ Settings</button>
+
+</div>
 
 <footer>© 2026 Spicy Masti</footer>
 
