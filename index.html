@@ -62,7 +62,7 @@ margin:25px 0;
 text-shadow:0 6px 10px rgba(0,0,0,0.2);
 }
 
-/* ACTION BUTTONS */
+/* BUTTONS */
 
 .action-buttons{
 display:flex;
@@ -82,15 +82,10 @@ color:black;
 box-shadow:0 6px 0 rgba(0,0,0,0.2),0 10px 16px rgba(0,0,0,0.2);
 }
 
-.call-btn{
-background:#00fa9a;
-}
+.call-btn{background:#00fa9a;}
+.map-btn{background:#48d1cc;}
 
-.map-btn{
-background:#48d1cc;
-}
-
-/* SEARCH BAR */
+/* SEARCH */
 
 .search-wrapper{
 position:sticky;
@@ -112,13 +107,9 @@ box-shadow:0 6px 0 rgba(0,0,0,0.15),0 10px 16px rgba(0,0,0,0.15);
 
 /* MENU */
 
-.menu{
-padding:16px;
-}
+.menu{padding:16px;}
 
-.category{
-margin-bottom:22px;
-}
+.category{margin-bottom:22px;}
 
 .category-title{
 display:flex;
@@ -130,30 +121,20 @@ border-bottom:2px solid #f0f0f0;
 cursor:pointer;
 }
 
-/* MENU ITEMS */
-
-.menu-item{
-display:flex;
-justify-content:space-between;
-padding:10px 0;
-border-bottom:1px dashed #ddd;
-font-size:15px;
-}
-
-/* IMAGE ITEM */
+/* ITEM */
 
 .image-item{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:12px 0;
+padding:14px 0;
 border-bottom:1px dashed #ddd;
 }
 
 .food-img{
-width:70px;
-height:70px;
-border-radius:12px;
+width:120px;
+height:120px;
+border-radius:16px;
 object-fit:cover;
 }
 
@@ -163,13 +144,30 @@ flex-direction:column;
 }
 
 .item-name{
-font-weight:600;
+font-weight:700;
+font-size:18px;
 }
 
 .item-price{
-font-size:14px;
-color:#555;
+font-size:16px;
+font-weight:600;
+color:#444;
 margin-top:4px;
+}
+
+/* NORMAL ITEMS */
+
+.menu-item{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px dashed #ddd;
+font-size:16px;
+}
+
+.menu-item span:last-child{
+font-weight:600;
+font-size:15px;
 }
 
 /* SEARCH RESULTS */
@@ -199,16 +197,10 @@ text-decoration:none;
 color:white;
 }
 
-.offer-btn{
-background:#ffa500;
-}
-
-.settings-btn{
-background:#444;
-}
+.offer-btn{background:#ffa500;}
+.settings-btn{background:#444;}
 
 </style>
-
 </head>
 
 <body>
@@ -232,9 +224,10 @@ background:#444;
 
 <section class="menu" id="menu">
 
-<!-- Burger -->
+<!-- BURGER -->
 
 <div class="category">
+
 <div class="category-title" onclick="toggleCategory(this)">
 <span>Burger (4)</span>
 <span>▼</span>
@@ -253,27 +246,49 @@ background:#444;
 
 </div>
 
-<div class="menu-item">
-<span>Cheese Burger</span>
-<span>₹55</span>
+
+<div class="image-item">
+
+<div class="item-info">
+<div class="item-name">Cheese Burger</div>
+<div class="item-price">₹55</div>
 </div>
 
-<div class="menu-item">
-<span>Double Tikki Burger</span>
-<span>₹60</span>
-</div>
-
-<div class="menu-item">
-<span>French Burger</span>
-<span>₹80</span>
-</div>
+<img src="https://shorturl.at/yPypv" class="food-img">
 
 </div>
+
+
+<div class="image-item">
+
+<div class="item-info">
+<div class="item-name">Double Tikki Burger</div>
+<div class="item-price">₹60</div>
 </div>
 
-<!-- Maggi -->
+<img src="https://shorturl.at/et1Ti" class="food-img">
+
+</div>
+
+
+<div class="image-item">
+
+<div class="item-info">
+<div class="item-name">French Burger</div>
+<div class="item-price">₹80</div>
+</div>
+
+<img src="https://shorturl.at/imVh8" class="food-img">
+
+</div>
+
+</div>
+</div>
+
+<!-- MAGGI -->
 
 <div class="category">
+
 <div class="category-title" onclick="toggleCategory(this)">
 <span>Maggi (6)</span>
 <span>▼</span>
@@ -291,9 +306,10 @@ background:#444;
 </div>
 </div>
 
-<!-- Snacks -->
+<!-- SNACKS -->
 
 <div class="category">
+
 <div class="category-title" onclick="toggleCategory(this)">
 <span>Snacks (7)</span>
 <span>▼</span>
@@ -312,9 +328,10 @@ background:#444;
 </div>
 </div>
 
-<!-- Shakes -->
+<!-- SHAKES -->
 
 <div class="category">
+
 <div class="category-title" onclick="toggleCategory(this)">
 <span>Shakes (5)</span>
 <span>▼</span>
@@ -331,9 +348,10 @@ background:#444;
 </div>
 </div>
 
-<!-- Soup -->
+<!-- SOUP -->
 
 <div class="category">
+
 <div class="category-title" onclick="toggleCategory(this)">
 <span>Soup (3)</span>
 <span>▼</span>
@@ -348,18 +366,20 @@ background:#444;
 </div>
 </div>
 
-<!-- Desert -->
+<!-- DESERT -->
 
 <div class="category">
+
 <div class="category-title" onclick="toggleCategory(this)">
 <span>Deserts (1)</span>
 <span>▼</span>
 </div>
 
 <div class="items">
-<div class="menu-item"><span>Gulab Jamun 3pcs</span><span>₹50</span></div>
-</div>
 
+<div class="menu-item"><span>Gulab Jamun 3pcs</span><span>₹50</span></div>
+
+</div>
 </div>
 
 </section>
