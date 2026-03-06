@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,10 +15,10 @@ body{
 margin:0;
 font-family:Poppins;
 background:white;
-padding-bottom:70px;
+padding-bottom:80px;
 }
 
-/* INTRO LOGO */
+/* INTRO */
 
 #intro{
 position:fixed;
@@ -51,7 +52,7 @@ animation:zoom 2s;
 to{opacity:0;visibility:hidden}
 }
 
-/* HEADER */
+/* LOGO */
 
 .logo{
 text-align:center;
@@ -129,6 +130,8 @@ border-bottom:2px solid #f0f0f0;
 cursor:pointer;
 }
 
+/* MENU ITEMS */
+
 .menu-item{
 display:flex;
 justify-content:space-between;
@@ -141,8 +144,10 @@ font-size:15px;
 
 .image-item{
 display:flex;
-gap:12px;
+justify-content:space-between;
 align-items:center;
+padding:12px 0;
+border-bottom:1px dashed #ddd;
 }
 
 .food-img{
@@ -164,6 +169,7 @@ font-weight:600;
 .item-price{
 font-size:14px;
 color:#555;
+margin-top:4px;
 }
 
 /* SEARCH RESULTS */
@@ -202,6 +208,7 @@ background:#444;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -229,25 +236,37 @@ background:#444;
 
 <div class="category">
 <div class="category-title" onclick="toggleCategory(this)">
-<span>Burger (4)</span><span>▼</span>
+<span>Burger (4)</span>
+<span>▼</span>
 </div>
 
 <div class="items">
 
-<div class="menu-item image-item">
-
-<img src="https://shorturl.at/2iJOS" class="food-img">
+<div class="image-item">
 
 <div class="item-info">
 <div class="item-name">Aloo Tikki Burger</div>
 <div class="item-price">₹40</div>
 </div>
 
+<img src="https://shorturl.at/2iJOS" class="food-img">
+
 </div>
 
-<div class="menu-item"><span>Cheese Burger</span><span>₹55</span></div>
-<div class="menu-item"><span>Double Tikki Burger</span><span>₹60</span></div>
-<div class="menu-item"><span>French Burger</span><span>₹80</span></div>
+<div class="menu-item">
+<span>Cheese Burger</span>
+<span>₹55</span>
+</div>
+
+<div class="menu-item">
+<span>Double Tikki Burger</span>
+<span>₹60</span>
+</div>
+
+<div class="menu-item">
+<span>French Burger</span>
+<span>₹80</span>
+</div>
 
 </div>
 </div>
@@ -256,7 +275,8 @@ background:#444;
 
 <div class="category">
 <div class="category-title" onclick="toggleCategory(this)">
-<span>Maggi (6)</span><span>▼</span>
+<span>Maggi (6)</span>
+<span>▼</span>
 </div>
 
 <div class="items">
@@ -275,7 +295,8 @@ background:#444;
 
 <div class="category">
 <div class="category-title" onclick="toggleCategory(this)">
-<span>Snacks (7)</span><span>▼</span>
+<span>Snacks (7)</span>
+<span>▼</span>
 </div>
 
 <div class="items">
@@ -295,7 +316,8 @@ background:#444;
 
 <div class="category">
 <div class="category-title" onclick="toggleCategory(this)">
-<span>Shakes (5)</span><span>▼</span>
+<span>Shakes (5)</span>
+<span>▼</span>
 </div>
 
 <div class="items">
@@ -313,7 +335,8 @@ background:#444;
 
 <div class="category">
 <div class="category-title" onclick="toggleCategory(this)">
-<span>Soup (3)</span><span>▼</span>
+<span>Soup (3)</span>
+<span>▼</span>
 </div>
 
 <div class="items">
@@ -329,14 +352,14 @@ background:#444;
 
 <div class="category">
 <div class="category-title" onclick="toggleCategory(this)">
-<span>Deserts (1)</span><span>▼</span>
+<span>Deserts (1)</span>
+<span>▼</span>
 </div>
 
 <div class="items">
-
 <div class="menu-item"><span>Gulab Jamun 3pcs</span><span>₹50</span></div>
-
 </div>
+
 </div>
 
 </section>
@@ -349,40 +372,41 @@ background:#444;
 <script>
 
 function toggleCategory(el){
-const items=el.nextElementSibling;
-const arrow=el.querySelector("span:last-child");
+const items=el.nextElementSibling
+const arrow=el.querySelector("span:last-child")
 
 if(items.style.display==="none"){
-items.style.display="block";
-arrow.textContent="▼";
+items.style.display="block"
+arrow.textContent="▼"
 }else{
-items.style.display="none";
-arrow.textContent="▲";
+items.style.display="none"
+arrow.textContent="▲"
 }
 }
 
 function searchMenu(){
 
-const input=document.getElementById("searchInput").value.toLowerCase();
-const results=document.getElementById("searchResults");
-const menu=document.getElementById("menu");
+const input=document.getElementById("searchInput").value.toLowerCase()
+const results=document.getElementById("searchResults")
+const menu=document.getElementById("menu")
 
-results.innerHTML="";
+results.innerHTML=""
 
 if(input===""){
-menu.style.display="block";
-results.style.display="none";
-return;
+menu.style.display="block"
+results.style.display="none"
+return
 }
 
-menu.style.display="none";
-results.style.display="block";
+menu.style.display="none"
+results.style.display="block"
 
-document.querySelectorAll(".menu-item").forEach(item=>{
+document.querySelectorAll(".menu-item,.image-item").forEach(item=>{
 if(item.innerText.toLowerCase().includes(input)){
-results.appendChild(item.cloneNode(true));
+results.appendChild(item.cloneNode(true))
 }
-});
+})
+
 }
 
 </script>
