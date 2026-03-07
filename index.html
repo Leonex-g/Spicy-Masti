@@ -38,8 +38,6 @@ animation-delay:2s;
 .intro-logo{
 font-size:42px;
 font-weight:800;
-color:black;
-text-shadow:0 6px 12px rgba(0,0,0,0.3);
 animation:zoom 2s;
 }
 
@@ -59,10 +57,9 @@ text-align:center;
 font-size:34px;
 font-weight:800;
 margin:25px 0;
-text-shadow:0 6px 10px rgba(0,0,0,0.2);
 }
 
-/* BUTTONS */
+/* CALL BUTTONS */
 
 .action-buttons{
 display:flex;
@@ -107,21 +104,31 @@ box-shadow:0 6px 0 rgba(0,0,0,0.15),0 10px 16px rgba(0,0,0,0.15);
 
 /* MENU */
 
-.menu{padding:16px;}
+.menu{
+padding:16px;
+}
 
-.category{margin-bottom:22px;}
+.category{
+margin-bottom:22px;
+}
+
+/* STICKY CATEGORY TITLE */
 
 .category-title{
 display:flex;
 justify-content:space-between;
-font-weight:600;
+font-weight:700;
 font-size:18px;
 padding:10px 0;
-border-bottom:2px solid #f0f0f0;
+background:white;
+position:sticky;
+top:65px;
+z-index:4;
+border-bottom:2px solid #eee;
 cursor:pointer;
 }
 
-/* ITEM */
+/* IMAGE ITEMS */
 
 .image-item{
 display:flex;
@@ -151,7 +158,6 @@ font-size:18px;
 .item-price{
 font-size:16px;
 font-weight:600;
-color:#444;
 margin-top:4px;
 }
 
@@ -167,14 +173,7 @@ font-size:16px;
 
 .menu-item span:last-child{
 font-weight:600;
-font-size:15px;
-}
-
-/* SEARCH RESULTS */
-
-#searchResults{
-display:none;
-padding:16px;
+font-size:16px;
 }
 
 /* BOTTOM BUTTONS */
@@ -185,7 +184,6 @@ bottom:0;
 left:0;
 width:100%;
 display:flex;
-z-index:1000;
 }
 
 .bottom-buttons a{
@@ -213,109 +211,118 @@ color:white;
 
 <div class="action-buttons">
 <a href="tel:7290945445" class="call-btn">📞 Contact Us</a>
-<a href="https://maps.app.goo.gl/RL4HiaMXgbRnvpVm8" target="_blank" class="map-btn">📍 Location</a>
+<a href="https://maps.app.goo.gl/RL4HiaMXgbRnvpVm8" target="_blank" class="map-btn">📍 View Location</a>
 </div>
 
 <div class="search-wrapper">
-<input type="text" id="searchInput" placeholder="Search menu items..." onkeyup="searchMenu()">
+<input type="text" placeholder="Search menu items...">
 </div>
 
-<section id="searchResults"></section>
-
-<section class="menu" id="menu">
+<section class="menu">
 
 <!-- BURGER -->
 
 <div class="category">
 
-<div class="category-title" onclick="toggleCategory(this)">
-<span>Burger (4)</span>
-<span>▼</span>
-</div>
-
-<div class="items">
+<div class="category-title">Burger</div>
 
 <div class="image-item">
-
 <div class="item-info">
 <div class="item-name">Aloo Tikki Burger</div>
 <div class="item-price">₹40</div>
 </div>
-
 <img src="https://shorturl.at/2iJOS" class="food-img">
-
 </div>
 
-
 <div class="image-item">
-
 <div class="item-info">
 <div class="item-name">Cheese Burger</div>
 <div class="item-price">₹55</div>
 </div>
-
 <img src="https://shorturl.at/yPypv" class="food-img">
-
 </div>
 
-
 <div class="image-item">
-
 <div class="item-info">
 <div class="item-name">Double Tikki Burger</div>
 <div class="item-price">₹60</div>
 </div>
-
 <img src="https://shorturl.at/et1Ti" class="food-img">
-
 </div>
 
-
 <div class="image-item">
-
 <div class="item-info">
 <div class="item-name">French Burger</div>
 <div class="item-price">₹80</div>
 </div>
-
 <img src="https://shorturl.at/imVh8" class="food-img">
-
 </div>
 
 </div>
-</div>
+
 
 <!-- MAGGI -->
 
 <div class="category">
 
-<div class="category-title" onclick="toggleCategory(this)">
-<span>Maggi (6)</span>
-<span>▼</span>
+<div class="category-title">Maggi</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Masala Maggi</div>
+<div class="item-price">₹30</div>
+</div>
+<img src="https://shorturl.at/I42mQ" class="food-img">
 </div>
 
-<div class="items">
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Double Masala Maggi</div>
+<div class="item-price">₹35</div>
+</div>
+<img src="" class="food-img">
+</div>
 
-<div class="menu-item"><span>Masala Maggi</span><span>₹30</span></div>
-<div class="menu-item"><span>Double Masala Maggi</span><span>₹35</span></div>
-<div class="menu-item"><span>Veggie Maggi</span><span>₹45</span></div>
-<div class="menu-item"><span>Cheese Maggi</span><span>₹60</span></div>
-<div class="menu-item"><span>Chilli Hot Garlic Maggi</span><span>₹70</span></div>
-<div class="menu-item"><span>Maggi Delight</span><span>₹80</span></div>
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Veggie Maggi</div>
+<div class="item-price">₹45</div>
+</div>
+<img src="https://shorturl.at/XKymK" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Cheese Maggi</div>
+<div class="item-price">₹60</div>
+</div>
+<img src="https://shorturl.at/9xaMT" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Chilli Hot Garlic Maggi</div>
+<div class="item-price">₹70</div>
+</div>
+<img src="https://shorturl.at/pStWd" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Maggi Delight</div>
+<div class="item-price">₹80</div>
+</div>
+<img src="https://shorturl.at/0fvkw" class="food-img">
+</div>
 
 </div>
-</div>
+
 
 <!-- SNACKS -->
 
 <div class="category">
 
-<div class="category-title" onclick="toggleCategory(this)">
-<span>Snacks (7)</span>
-<span>▼</span>
-</div>
-
-<div class="items">
+<div class="category-title">Snacks</div>
 
 <div class="menu-item"><span>Plain Sweetcorn</span><span>₹40</span></div>
 <div class="menu-item"><span>Classic Sweetcorn</span><span>₹50</span></div>
@@ -326,18 +333,29 @@ color:white;
 <div class="menu-item"><span>Cheese Fries</span><span>₹120</span></div>
 
 </div>
+
+
+<!-- PASTA -->
+
+<div class="category">
+
+<div class="category-title">Pasta</div>
+
+<div class="menu-item"><span>Vegetables Macaroni</span><span>₹80 | Large +30</span></div>
+<div class="menu-item"><span>Ghar Jesa Pasta</span><span>₹80 | Large +30</span></div>
+<div class="menu-item"><span>White Sauce Pasta</span><span>₹110 | Large +30</span></div>
+<div class="menu-item"><span>Red Sauce Pasta</span><span>₹110 | Large +30</span></div>
+<div class="menu-item"><span>Mix Sauce Pasta</span><span>₹110 | Large +30</span></div>
+<div class="menu-item"><span>Pasta Delight</span><span>₹130 | Large +30</span></div>
+
 </div>
+
 
 <!-- SHAKES -->
 
 <div class="category">
 
-<div class="category-title" onclick="toggleCategory(this)">
-<span>Shakes (5)</span>
-<span>▼</span>
-</div>
-
-<div class="items">
+<div class="category-title">Shakes</div>
 
 <div class="menu-item"><span>Iced Americano</span><span>₹80</span></div>
 <div class="menu-item"><span>Cold Coffee Shake</span><span>₹100</span></div>
@@ -346,40 +364,29 @@ color:white;
 <div class="menu-item"><span>Chocolate Shake</span><span>₹120</span></div>
 
 </div>
-</div>
+
 
 <!-- SOUP -->
 
 <div class="category">
 
-<div class="category-title" onclick="toggleCategory(this)">
-<span>Soup (3)</span>
-<span>▼</span>
-</div>
-
-<div class="items">
+<div class="category-title">Soup</div>
 
 <div class="menu-item"><span>Mix Veg Soup</span><span>₹50</span></div>
 <div class="menu-item"><span>Hot & Sour Soup</span><span>₹50</span></div>
 <div class="menu-item"><span>Tomato Soup</span><span>₹50</span></div>
 
 </div>
-</div>
 
-<!-- DESERT -->
+
+<!-- DESSERT -->
 
 <div class="category">
 
-<div class="category-title" onclick="toggleCategory(this)">
-<span>Deserts (1)</span>
-<span>▼</span>
-</div>
+<div class="category-title">Dessert</div>
 
-<div class="items">
+<div class="menu-item"><span>Gulab Jamun (3pcs)</span><span>₹50</span></div>
 
-<div class="menu-item"><span>Gulab Jamun 3pcs</span><span>₹50</span></div>
-
-</div>
 </div>
 
 </section>
@@ -388,48 +395,6 @@ color:white;
 <a href="offer.html" class="offer-btn">🏷 Offers</a>
 <a href="Setting.html" class="settings-btn">⚙ Settings</a>
 </div>
-
-<script>
-
-function toggleCategory(el){
-const items=el.nextElementSibling
-const arrow=el.querySelector("span:last-child")
-
-if(items.style.display==="none"){
-items.style.display="block"
-arrow.textContent="▼"
-}else{
-items.style.display="none"
-arrow.textContent="▲"
-}
-}
-
-function searchMenu(){
-
-const input=document.getElementById("searchInput").value.toLowerCase()
-const results=document.getElementById("searchResults")
-const menu=document.getElementById("menu")
-
-results.innerHTML=""
-
-if(input===""){
-menu.style.display="block"
-results.style.display="none"
-return
-}
-
-menu.style.display="none"
-results.style.display="block"
-
-document.querySelectorAll(".menu-item,.image-item").forEach(item=>{
-if(item.innerText.toLowerCase().includes(input)){
-results.appendChild(item.cloneNode(true))
-}
-})
-
-}
-
-</script>
 
 </body>
 </html>
