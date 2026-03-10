@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
 <meta charset="UTF-8">
@@ -7,20 +8,18 @@
 
 <title>Spicy Masti</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-
 <style>
 
 body{
 margin:0;
-font-family:Poppins;
-background:white;
-padding-bottom:80px;
+font-family:Arial;
+background:#f4f4f4;
+padding-top:70px;
 }
 
-/* INTRO */
+/* SPLASH */
 
-#intro{
+#splash{
 position:fixed;
 top:0;
 left:0;
@@ -31,118 +30,119 @@ display:flex;
 justify-content:center;
 align-items:center;
 z-index:9999;
-animation:fadeout 1s forwards;
-animation-delay:2s;
 }
 
-.intro-logo{
-font-size:42px;
-font-weight:800;
-animation:zoom 2s;
+.splash-text{
+font-size:40px;
+font-weight:bold;
+letter-spacing:3px;
+animation:zoom 2s infinite alternate;
 }
 
 @keyframes zoom{
-0%{transform:scale(0.5);opacity:0}
-100%{transform:scale(1);opacity:1}
+from{transform:scale(1);}
+to{transform:scale(1.2);}
 }
 
-@keyframes fadeout{
-to{opacity:0;visibility:hidden}
-}
+/* HEADER */
 
-/* LOGO */
-
-.logo{
-text-align:center;
-font-size:34px;
-font-weight:800;
-margin:25px 0;
-}
-
-/* CALL BUTTONS */
-
-.action-buttons{
-display:flex;
-gap:10px;
-padding:0 16px;
-margin-bottom:12px;
-}
-
-.action-buttons a{
-flex:1;
-text-align:center;
-padding:14px;
-border-radius:12px;
-font-weight:600;
-text-decoration:none;
-color:black;
-box-shadow:0 6px 0 rgba(0,0,0,0.2),0 10px 16px rgba(0,0,0,0.2);
-}
-
-.call-btn{background:#00fa9a;}
-.map-btn{background:#48d1cc;}
-
-/* SEARCH */
-
-.search-wrapper{
-position:sticky;
+.header{
+position:fixed;
 top:0;
-background:white;
-padding:12px 16px;
-z-index:5;
-border-bottom:1px solid #eee;
-}
-
-.search-wrapper input{
+left:0;
 width:100%;
-padding:14px;
-border-radius:14px;
-border:1px solid #ccc;
-font-size:16px;
-box-shadow:0 6px 0 rgba(0,0,0,0.15),0 10px 16px rgba(0,0,0,0.15);
-}
-
-/* MENU */
-
-.menu{
-padding:16px;
-}
-
-.category{
-margin-bottom:22px;
-}
-
-/* STICKY CATEGORY TITLE */
-
-.category-title{
 display:flex;
 justify-content:space-between;
-font-weight:700;
-font-size:18px;
-padding:10px 0;
+align-items:center;
+padding:15px 20px;
 background:white;
-position:sticky;
-top:65px;
-z-index:4;
-border-bottom:2px solid #eee;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+z-index:1000;
+box-sizing:border-box;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+.menu-btn{
+font-size:28px;
 cursor:pointer;
 }
 
-/* IMAGE ITEMS */
+/* NAV MENU */
+
+.nav-menu{
+position:fixed;
+top:65px;
+right:15px;
+width:200px;
+background:white;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+overflow:hidden;
+display:none;
+z-index:999;
+}
+
+.nav-item{
+display:flex;
+align-items:center;
+gap:10px;
+padding:14px;
+border-bottom:1px solid #eee;
+cursor:pointer;
+background:linear-gradient(145deg,#ffffff,#e6e6e6);
+box-shadow:4px 4px 8px rgba(0,0,0,0.15),
+-2px -2px 6px rgba(255,255,255,0.7);
+}
+
+.nav-icon{
+font-size:18px;
+}
+
+/* CATEGORY */
+
+.category{
+margin:15px;
+background:white;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+overflow:hidden;
+}
+
+.category-title{
+padding:15px;
+font-size:20px;
+font-weight:bold;
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:pointer;
+background:#fafafa;
+}
+
+.arrow{
+transition:0.3s;
+}
+
+.rotate{
+transform:rotate(90deg);
+}
+
+.items{
+padding:10px;
+}
+
+/* ITEM */
 
 .image-item{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:14px 0;
-border-bottom:1px dashed #ddd;
-}
-
-.food-img{
-width:120px;
-height:120px;
-border-radius:16px;
-object-fit:cover;
+padding:12px;
+border-bottom:1px solid #eee;
 }
 
 .item-info{
@@ -151,87 +151,117 @@ flex-direction:column;
 }
 
 .item-name{
-font-weight:700;
-font-size:18px;
+font-size:16px;
+font-weight:600;
 }
 
 .item-price{
-font-size:16px;
-font-weight:600;
-margin-top:4px;
+font-size:15px;
+font-weight:bold;
 }
 
-/* NORMAL ITEMS */
-
-.menu-item{
-display:flex;
-justify-content:space-between;
-padding:10px 0;
-border-bottom:1px dashed #ddd;
-font-size:16px;
+.food-img{
+width:70px;
+height:70px;
+border-radius:10px;
+object-fit:cover;
+background:#ddd;
 }
 
-.menu-item span:last-child{
-font-weight:600;
-font-size:16px;
+.hide{
+display:none;
 }
 
-/* BOTTOM BUTTONS */
+/* FOOTER */
 
-.bottom-buttons{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-display:flex;
-}
-
-.bottom-buttons a{
-flex:1;
-padding:16px;
-font-weight:600;
+footer{
 text-align:center;
-text-decoration:none;
+padding:20px;
+background:#111;
 color:white;
+font-size:14px;
+margin-top:40px;
 }
 
-.offer-btn{background:#ffa500;}
-.settings-btn{background:#444;}
+/* MOBILE */
+
+@media(max-width:600px){
+
+.logo{
+font-size:20px;
+}
+
+.food-img{
+width:65px;
+height:65px;
+}
+
+.nav-menu{
+width:180px;
+}
+
+}
 
 </style>
 </head>
 
 <body>
 
-<div id="intro">
-<div class="intro-logo">Spicy Masti</div>
+<!-- SPLASH -->
+
+<div id="splash">
+<div class="splash-text">Spicy Masti</div>
 </div>
+
+<!-- HEADER -->
+
+<div class="header">
 
 <div class="logo">Spicy Masti</div>
 
-<div class="action-buttons">
-<a href="tel:7290945445" class="call-btn">📞 Contact Us</a>
-<a href="https://maps.app.goo.gl/RL4HiaMXgbRnvpVm8" target="_blank" class="map-btn">📍 Location</a>
+<div class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</div>
+
 </div>
 
-<div class="search-wrapper">
-<input type="text" placeholder="Search menu items...">
+<!-- NAV MENU -->
+
+<div class="nav-menu" id="navMenu">
+
+<div class="nav-item" onclick="openLocation()">
+<span class="nav-icon">📍</span> Location
 </div>
 
-<section class="menu">
+<div class="nav-item">
+<span class="nav-icon">❓</span> Help
+</div>
+
+<div class="nav-item">
+<span class="nav-icon">🏷</span> Offers
+</div>
+
+<div class="nav-item">
+<span class="nav-icon">⚙</span> Settings
+</div>
+
+</div>
 
 <!-- BURGER -->
 
 <div class="category">
 
-<div class="category-title">Burger</div>
+<div class="category-title" onclick="toggle(this)">
+Burger
+<span class="arrow">▶</span>
+</div>
+
+<div class="items">
 
 <div class="image-item">
 <div class="item-info">
 <div class="item-name">Aloo Tikki Burger</div>
 <div class="item-price">₹40</div>
 </div>
-<img src="https://shorturl.at/2iJOS" class="food-img">
+<img src="https://shorturl.at/dYQoe" class="food-img">
 </div>
 
 <div class="image-item">
@@ -239,7 +269,7 @@ color:white;
 <div class="item-name">Cheese Burger</div>
 <div class="item-price">₹55</div>
 </div>
-<img src="https://shorturl.at/yPypv" class="food-img">
+<img src="https://shorturl.at/41NDl" class="food-img">
 </div>
 
 <div class="image-item">
@@ -247,7 +277,7 @@ color:white;
 <div class="item-name">Double Tikki Burger</div>
 <div class="item-price">₹60</div>
 </div>
-<img src="https://shorturl.at/et1Ti" class="food-img">
+<img src="https://shorturl.at/GH8UL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -255,9 +285,10 @@ color:white;
 <div class="item-name">French Burger</div>
 <div class="item-price">₹80</div>
 </div>
-<img src="https://shorturl.at/imVh8" class="food-img">
+<img src="https://shorturl.at/q8L19" class="food-img">
 </div>
 
+</div>
 </div>
 
 
@@ -265,7 +296,12 @@ color:white;
 
 <div class="category">
 
-<div class="category-title">Maggi</div>
+<div class="category-title" onclick="toggle(this)">
+Maggi
+<span class="arrow">▶</span>
+</div>
+
+<div class="items">
 
 <div class="image-item">
 <div class="item-info">
@@ -316,15 +352,21 @@ color:white;
 </div>
 
 </div>
+</div>
 
 
 <!-- SNACKS -->
 
 <div class="category">
 
-<div class="category-title">Snacks</div>
+<div class="category-title" onclick="toggle(this)">
+Snacks
+<span class="arrow">▶</span>
+</div>
 
-  <div class="image-item">
+<div class="items">
+
+<div class="image-item">
 <div class="item-info">
 <div class="item-name">Plain Sweetcorn</div>
 <div class="item-price">₹40</div>
@@ -332,54 +374,55 @@ color:white;
 <img src="" class="food-img">
 </div>
 
-  <div class="image-item">
+<div class="image-item">
 <div class="item-info">
 <div class="item-name">Classic Sweetcorn</div>
 <div class="item-price">₹50</div>
 </div>
-<img src="" class="food-img">
+<img src="https://tinyurl.com/zz5yhdr4" class="food-img">
 </div>
 
-  <div class="image-item">
+<div class="image-item">
 <div class="item-info">
 <div class="item-name">Butter Masala Sweetcorn</div>
 <div class="item-price">₹50</div>
 </div>
-<img src="" class="food-img">
+<img src="https://tinyurl.com/yzp8brkb" class="food-img">
 </div>
 
-  <div class="image-item">
+<div class="image-item">
 <div class="item-info">
 <div class="item-name">Tandoori Sweetcorn</div>
 <div class="item-price">₹60</div>
 </div>
-<img src="" class="food-img">
+<img src="https://tinyurl.com/yremazvx" class="food-img">
 </div>
 
-  <div class="image-item">
+<div class="image-item">
 <div class="item-info">
 <div class="item-name">French Fries</div>
 <div class="item-price">₹80</div>
 </div>
-<img src="" class="food-img">
+<img src="https://tinyurl.com/ywse7d4h" class="food-img">
 </div>
 
-  <div class="image-item">
+<div class="image-item">
 <div class="item-info">
 <div class="item-name">Peri Peri Fries</div>
 <div class="item-price">₹90</div>
 </div>
-<img src="" class="food-img">
+<img src="https://tinyurl.com/562vp3af" class="food-img">
 </div>
 
-</div>
-
-  <div class="image-item">
+<div class="image-item">
 <div class="item-info">
 <div class="item-name">Cheese Fries</div>
 <div class="item-price">₹120</div>
 </div>
-<img src="" class="food-img">
+<img src="https://tinyurl.com/mr3cu32t" class="food-img">
+</div>
+
+</div>
 </div>
 
 
@@ -387,9 +430,14 @@ color:white;
 
 <div class="category">
 
-<div class="category-title">Pasta</div>
+<div class="category-title" onclick="toggle(this)">
+Pasta
+<span class="arrow">▶</span>
+</div>
 
-  <div class="image-item">
+<div class="items">
+
+<div class="image-item">
 <div class="item-info">
 <div class="item-name">Vegetables Macaroni</div>
 <div class="item-price">₹80 | ₹110</div>
@@ -397,15 +445,7 @@ color:white;
 <img src="" class="food-img">
 </div>
 
-  <div class="image-item">
-<div class="item-info">
-<div class="item-name">Ghar Jesa Pasta</div>
-<div class="item-price">₹80 | ₹110</div>
-</div>
-<img src="" class="food-img">
-</div>
-
-  <div class="image-item">
+<div class="image-item">
 <div class="item-info">
 <div class="item-name">White Sauce Pasta</div>
 <div class="item-price">₹110 | ₹140</div>
@@ -413,28 +453,6 @@ color:white;
 <img src="" class="food-img">
 </div>
 
-  <div class="image-item">
-<div class="item-info">
-<div class="item-name">Red Sauce Pasta</div>
-<div class="item-price">₹110 | ₹140</div>
-</div>
-<img src="" class="food-img">
-</div>
-
-  <div class="image-item">
-<div class="item-info">
-<div class="item-name">Mix Sauce Pasta</div>
-<div class="item-price">₹110 | ₹140</div>
-</div>
-<img src="" class="food-img">
-</div>
-
-  <div class="image-item">
-<div class="item-info">
-<div class="item-name">Pasta Delight</div>
-<div class="item-price">₹130 | ₹160</div>
-</div>
-<img src="" class="food-img">
 </div>
 </div>
 
@@ -443,17 +461,14 @@ color:white;
 
 <div class="category">
 
-<div class="category-title">Shakes</div>
+<div class="category-title" onclick="toggle(this)">
+Shakes
+<span class="arrow">▶</span>
+</div>
+
+<div class="items">
 
 <div class="image-item">
-<div class="item-info">
-<div class="item-name">Iced Americano</div>
-<div class="item-price">₹80</div>
-</div>
-<img src="" class="food-img">
-</div>
-
-  <div class="image-item">
 <div class="item-info">
 <div class="item-name">Cold Coffee Shake</div>
 <div class="item-price">₹100</div>
@@ -461,7 +476,7 @@ color:white;
 <img src="" class="food-img">
 </div>
 
-  <div class="image-item">
+<div class="image-item">
 <div class="item-info">
 <div class="item-name">Oreo Shake</div>
 <div class="item-price">₹110</div>
@@ -469,22 +484,7 @@ color:white;
 <img src="" class="food-img">
 </div>
 
-  <div class="image-item">
-<div class="item-info">
-<div class="item-name">KitKat Shake</div>
-<div class="item-price">₹110</div>
 </div>
-<img src="" class="food-img">
-</div>
-
-  <div class="image-item">
-<div class="item-info">
-<div class="item-name">Chocolate Shake</div>
-<div class="item-price">₹120</div>
-</div>
-<img src="" class="food-img">
-</div>
-
 </div>
 
 
@@ -492,32 +492,30 @@ color:white;
 
 <div class="category">
 
-<div class="category-title">Soup</div>
+<div class="category-title" onclick="toggle(this)">
+Soup
+<span class="arrow">▶</span>
+</div>
+
+<div class="items">
 
 <div class="image-item">
 <div class="item-info">
 <div class="item-name">Mix Veg Soup</div>
 <div class="item-price">₹50</div>
 </div>
-<img src="" class="food-img">
+<img src="https://shorturl.at/hOgc6" class="food-img">
 </div>
 
-  <div class="image-item">
-<div class="item-info">
-<div class="item-name">Hot & Sour Soup</div>
-<div class="item-price">₹50</div>
-</div>
-<img src="" class="food-img">
-</div>
-
-  <div class="image-item">
+<div class="image-item">
 <div class="item-info">
 <div class="item-name">Tomato Soup</div>
 <div class="item-price">₹50</div>
 </div>
-<img src="" class="food-img">
+<img src="https://shorturl.at/4QSNQ" class="food-img">
 </div>
 
+</div>
 </div>
 
 
@@ -525,24 +523,68 @@ color:white;
 
 <div class="category">
 
-<div class="category-title">Dessert</div>
-  
+<div class="category-title" onclick="toggle(this)">
+Dessert
+<span class="arrow">▶</span>
+</div>
+
+<div class="items">
+
 <div class="image-item">
 <div class="item-info">
 <div class="item-name">Gulab Jamun (3pcs)</div>
 <div class="item-price">₹50</div>
 </div>
-<img src="" class="food-img">
+<img src="https://shorturl.at/iQq0H" class="food-img">
 </div>
 
 </div>
-
-</section>
-
-<div class="bottom-buttons">
-<a href="offer.html" class="offer-btn">🏷 Offers</a>
-<a href="Setting.html" class="settings-btn">⚙ Settings</a>
 </div>
+
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 Spicy Masti. All Rights Reserved.
+</footer>
+
+
+<script>
+
+function toggle(el){
+
+let items = el.nextElementSibling
+let arrow = el.querySelector(".arrow")
+
+items.classList.toggle("hide")
+arrow.classList.toggle("rotate")
+
+}
+
+setTimeout(function(){
+document.getElementById("splash").style.display="none"
+},2500)
+
+function toggleMenu(){
+
+let menu=document.getElementById("navMenu")
+let btn=document.getElementById("menuBtn")
+
+if(menu.style.display==="block"){
+menu.style.display="none"
+btn.innerHTML="☰"
+}else{
+menu.style.display="block"
+btn.innerHTML="✖"
+}
+
+}
+
+function openLocation(){
+window.open("https://maps.app.goo.gl/5eFEcnGLxuixM33e6","_blank")
+}
+
+</script>
 
 </body>
 </html>
