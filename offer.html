@@ -1,78 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Offers</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Offers & Deals</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f5f4f0;
+      font-family: 'DM Sans', sans-serif;
+      color: #1c1c1c;
+    }
 
-body{
-margin:0;
-padding:0;
-font-family: Arial, sans-serif;
-background: linear-gradient(135deg,#1f1f1f,#000000);
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-height:100vh;
-text-align:center;
-}
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      background: #fff;
+      border-bottom: 1px solid #e3e1dc;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      gap: 10px;
+      z-index: 100;
+    }
+    .topbar-icon { font-size: 24px; opacity: 0.8; }
+    .topbar-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #888;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
 
-.container{
-padding:20px;
-}
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: rise 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-.icon{
-font-size:70px;
-margin-bottom:15px;
-}
+    .icon-area {
+      font-size: 50px;
+      margin-bottom: 24px;
+      display: inline-block;
+    }
 
-h1{
-font-size:24px;
-margin-bottom:10px;
-}
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
 
-p{
-font-size:16px;
-opacity:0.8;
-margin-bottom:25px;
-}
+    .line {
+      width: 36px;
+      height: 2px;
+      background: #c9c4b8;
+      border-radius: 2px;
+      margin: 0 auto 18px;
+    }
 
-button{
-background:#ff4d4d;
-border:none;
-padding:12px 25px;
-font-size:16px;
-border-radius:25px;
-color:white;
-cursor:pointer;
-transition:0.3s;
-}
+    p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #6b6b6b;
+      line-height: 1.75;
+      max-width: 290px;
+      margin-bottom: 32px;
+    }
 
-button:hover{
-background:#ff1a1a;
-transform:scale(1.05);
-}
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: transparent;
+      color: #1c1c1c;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1.5px solid #d4d1cb;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .back-btn:hover { border-color: #aaa; transform: translateY(-1px); }
+    .back-btn svg { width: 14px; height: 14px; }
 
-</style>
+    .foot {
+      position: fixed;
+      bottom: 20px;
+      font-size: 0.72rem;
+      color: #bbb;
+      letter-spacing: 0.04em;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
+  <div class="topbar">
+    <span class="topbar-icon">🏷️</span>
+    <span class="topbar-title">Offers & Deals</span>
+  </div>
 
-<div class="icon">🎁</div>
+  <div class="content">
+    <span class="icon-area">🏷️</span>
+    <h1>No Offers Yet</h1>
+    <div class="line"></div>
+    <p>We're cooking up some great deals for you. Check back soon for exciting offers and discounts.</p>
+    <a href="index.html" class="back-btn" onclick="history.back(); return false;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Back to Menu
+    </a>
+  </div>
 
-<h1>No Offers Available</h1>
-
-<p>Currently there are no active offers.  
-Check back later for exciting deals!</p>
-
-<button onclick="history.back()">Back to Menu</button>
-
-</div>
+  <span class="foot">© 2025 SPICY MASTI · All rights reserved</span>
 
 </body>
 </html>
