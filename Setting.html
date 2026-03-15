@@ -1,1 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f5f4f0;
+      font-family: 'DM Sans', sans-serif;
+      color: #1c1c1c;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      background: #fff;
+      border-bottom: 1px solid #e3e1dc;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      gap: 10px;
+    }
+
+    .topbar-icon { font-size: 18px; opacity: 0.6; }
+
+    .topbar-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #888;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: rise 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .icon-area {
+      font-size: 52px;
+      margin-bottom: 28px;
+      line-height: 1;
+      display: inline-block;
+      animation: spin-slow 10s linear infinite;
+    }
+
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: #1c1c1c;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .line {
+      width: 36px;
+      height: 2px;
+      background: #c9c4b8;
+      border-radius: 2px;
+      margin: 0 auto 20px;
+    }
+
+    p {
+      font-size: 0.97rem;
+      font-weight: 300;
+      color: #6b6b6b;
+      line-height: 1.8;
+      max-width: 300px;
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: #1c1c1c;
+      color: #f5f4f0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn:hover { background: #333; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn svg { width: 14px; height: 14px; }
+
+    .foot {
+      position: fixed;
+      bottom: 20px;
+      font-size: 0.72rem;
+      color: #bbb;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span class="topbar-icon">⚙️</span>
+    <span class="topbar-title">Settings</span>
+  </div>
+
+  <div class="content">
+    <span class="icon-area">⚙️</span>
+    <h1>We're Working On It</h1>
+    <div class="line"></div>
+    <p>This settings page is currently under construction. We'll have everything ready for you very soon.</p>
+    <a href="index.html" class="btn" onclick="history.back(); return false;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Back to Menu
+    </a>
+  </div>
+
+  <span class="foot">© 2025 Your App · All rights reserved</span>
+
+</body>
+</html>
