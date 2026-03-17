@@ -183,6 +183,26 @@ a { text-decoration: none; color: inherit; }
   font-size: 72px;
   opacity: 0.15;
 }
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.hero-247 {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(244, 162, 97, 0.18);
+  border: 1px solid rgba(244, 162, 97, 0.45);
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 20px;
+}
 .hero-tag {
   display: inline-block;
   background: var(--red);
@@ -381,21 +401,25 @@ footer strong { color: #fff; }
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tag">🌶️ Desi Flavours</div>
+  <div class="hero-top">
+    <div class="hero-tag">🌶️ Desi Flavours</div>
+    <div class="hero-247">🕐 Open 24/7</div>
+  </div>
   <h2>Bold Food,<br/><span>Bolder Taste.</span></h2>
   <p>Fresh made • Street style • Full of flavour</p>
 </div>
 
 <!-- CATEGORY SCROLL PILLS -->
 <div class="cat-scroll" id="catScroll">
-  <div class="cat-pill active" onclick="scrollTo('burger')">🍔 Burger</div>
-  <div class="cat-pill" onclick="scrollTo('maggi')">🍜 Maggi</div>
-  <div class="cat-pill" onclick="scrollTo('snacks')">🍿 Snacks</div>
-  <div class="cat-pill" onclick="scrollTo('breads')">🥖 Breads</div>
-  <div class="cat-pill" onclick="scrollTo('pasta')">🍝 Pasta</div>
-  <div class="cat-pill" onclick="scrollTo('shakes')">🥤 Shakes</div>
-  <div class="cat-pill" onclick="scrollTo('soup')">🥣 Soup</div>
-  <div class="cat-pill" onclick="scrollTo('dessert')">🍮 Dessert</div>
+  <div class="cat-pill active" onclick="filterCat('all', this)">🍽️ All</div>
+  <div class="cat-pill" onclick="filterCat('burger', this)">🍔 Burger</div>
+  <div class="cat-pill" onclick="filterCat('maggi', this)">🍜 Maggi</div>
+  <div class="cat-pill" onclick="filterCat('snacks', this)">🍿 Snacks</div>
+  <div class="cat-pill" onclick="filterCat('breads', this)">🥖 Breads</div>
+  <div class="cat-pill" onclick="filterCat('pasta', this)">🍝 Pasta</div>
+  <div class="cat-pill" onclick="filterCat('shakes', this)">🥤 Shakes</div>
+  <div class="cat-pill" onclick="filterCat('soup', this)">🥣 Soup</div>
+  <div class="cat-pill" onclick="filterCat('dessert', this)">🍮 Dessert</div>
 </div>
 
 <!-- BURGER -->
@@ -602,81 +626,4 @@ footer strong { color: #fff; }
   </div>
   <div class="items">
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Tomato Soup</div><div class="item-price">₹50</div></div>
-      <img src="https://tinyurl.com/a6tsj8ew" class="food-img" loading="lazy">
-    </div>
-    <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Mix Veg Soup</div><div class="item-price">₹50</div></div>
-      <img src="https://tinyurl.com/4xcr62a7" class="food-img" loading="lazy">
-    </div>
-    <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Hot &amp; Sour</div><div class="item-price">₹50</div></div>
-      <img src="https://tinyurl.com/yxwcxcy6" class="food-img" loading="lazy">
-    </div>
-  </div>
-</div>
-
-<!-- DESSERT -->
-<div class="category" id="dessert">
-  <div class="category-title" onclick="toggle(this)">
-    <div class="cat-left"><span class="cat-emoji">🍮</span> Dessert <span class="item-count">1 item</span></div>
-    <span class="arrow">▶</span>
-  </div>
-  <div class="items">
-    <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Gulab Jamun (3 pcs)</div><div class="item-price">₹50</div></div>
-      <img src="https://tinyurl.com/ype23ptn" class="food-img" loading="lazy">
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <strong>Spicy Masti</strong> &nbsp;·&nbsp; © 2026 All Rights Reserved
-</footer>
-
-<script>
-// Splash
-setTimeout(function(){
-  document.getElementById('splash').classList.add('hide');
-  setTimeout(()=> document.getElementById('splash').style.display='none', 650);
-}, 2400);
-
-// Toggle category
-function toggle(el){
-  const items = el.nextElementSibling;
-  const arrow = el.querySelector('.arrow');
-  items.classList.toggle('hide');
-  arrow.classList.toggle('rotate');
-}
-
-// Hamburger menu
-function toggleMenu(){
-  const menu = document.getElementById('navMenu');
-  const btn  = document.getElementById('menuBtn');
-  const open = menu.style.display === 'block';
-  menu.style.display = open ? 'none' : 'block';
-  btn.classList.toggle('open', !open);
-}
-
-// Close menu on outside click
-document.addEventListener('click', function(e){
-  const menu = document.getElementById('navMenu');
-  const btn  = document.getElementById('menuBtn');
-  if(menu.style.display === 'block' && !menu.contains(e.target) && !btn.contains(e.target)){
-    menu.style.display = 'none';
-    btn.classList.remove('open');
-  }
-});
-
-// Scroll to category
-function scrollTo(id){
-  document.getElementById(id).scrollIntoView({ behavior:'smooth', block:'start' });
-  // update active pill
-  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
-  event.target.classList.add('active');
-}
-</script>
-
-</body>
-</html>
+      <div class="item-info"><div class="it
