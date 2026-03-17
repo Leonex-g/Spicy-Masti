@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Spicy Masti</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+
+:root {
+  --red: #e63946;
+  --orange: #f4a261;
+  --dark: #1a1a1a;
+  --bg: #fdf8f3;
+  --card: #ffffff;
+  --border: #f0e8de;
+  --text: #2d2d2d;
+  --muted: #999;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding-top: 68px;
+}
+
+/* ── SPLASH ── */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  gap: 18px;
+  transition: opacity 0.6s ease;
+}
+#splash.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.splash-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 2px;
+}
+.splash-logo span { color: var(--orange); }
+.splash-sub {
+  font-size: 13px;
+  color: #888;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.splash-bar {
+  width: 160px;
+  height: 3px;
+  background: #333;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.splash-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--red), var(--orange));
+  border-radius: 3px;
+  animation: load 2.2s ease forwards;
+}
+@keyframes load {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* ── HEADER ── */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 68px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--dark);
+  letter-spacing: 0.5px;
+}
+.logo span { color: var(--red); }
+.logo small {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: -2px;
+}
+.menu-btn {
+  width: 40px; height: 40px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.2s;
+  padding: 6px;
+}
+.menu-btn:hover { background: #f5f0ea; }
+.menu-btn .bar {
+  width: 22px; height: 2px;
+  background: var(--dark);
+  border-radius: 2px;
+  transition: all 0.3s;
+  transform-origin: center;
+}
+.menu-btn.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.menu-btn.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── NAV MENU ── */
+.nav-menu {
+  position: fixed;
+  top: 68px; right: 14px;
+  width: 210px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  overflow: hidden;
+  display: none;
+  z-index: 999;
+  animation: dropIn 0.22s ease;
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+a { text-decoration: none; color: inherit; }
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid #f5f0ea;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.nav-item:last-child { border-bottom: none; }
+.nav-item:hover { background: #fdf8f3; }
+.nav-icon { font-size: 17px; }
+
+/* ── HERO BANNER ── */
+.hero {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d1a0e 100%);
+  margin: 14px 14px 0;
+  border-radius: 18px;
+  padding: 28px 24px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '🌶️';
+  position: absolute;
+  right: 20px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 72px;
+  opacity: 0.15;
+}
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.hero-247 {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(244, 162, 97, 0.18);
+  border: 1px solid rgba(244, 162, 97, 0.45);
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 20px;
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.hero h2 span { color: var(--orange); }
+.hero p {
+  font-size: 13px;
+  color: #aaa;
+  font-weight: 400;
+}
+
+/* ── CATEGORY SCROLL PILLS ── */
+.cat-scroll {
+  display: flex;
+  gap: 8px;
+  padding: 14px 14px 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cat-scroll::-webkit-scrollbar { display: none; }
+.cat-pill {
+  flex-shrink: 0;
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.cat-pill:hover, .cat-pill.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+/* ── CATEGORY ── */
+.category {
+  margin: 12px 14px;
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.category-title {
+  padding: 16px 18px;
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: #fff;
+  user-select: none;
+  transition: background 0.15s;
+}
+.category-title:hover { background: #fdf8f3; }
+.cat-left { display: flex; align-items: center; gap: 10px; }
+.cat-emoji { font-size: 20px; }
+.item-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  background: #f5f0ea;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.arrow {
+  font-size: 12px;
+  color: var(--muted);
+  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+.rotate { transform: rotate(90deg); }
+
+.items { padding: 0 10px 10px; }
+
+/* ── ITEM ── */
+.image-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8px;
+  border-bottom: 1px solid #f5f0ea;
+  gap: 12px;
+  transition: background 0.15s;
+  border-radius: 10px;
+}
+.image-item:last-child { border-bottom: none; }
+.image-item:hover { background: #fdf8f3; }
+.item-info { flex: 1; }
+.item-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.item-price {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--red);
+}
+.veg-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+  margin-bottom: 1px;
+}
+.food-img {
+  width: 76px; height: 76px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #f0e8de;
+  flex-shrink: 0;
+}
+
+.hide { display: none; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 24px 20px;
+  background: var(--dark);
+  color: #666;
+  font-size: 12px;
+  margin-top: 30px;
+  letter-spacing: 0.04em;
+}
+footer strong { color: #fff; }
+
+/* ── MOBILE ── */
+@media(max-width:400px){
+  .hero h2 { font-size: 22px; }
+  .food-img { width: 68px; height: 68px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-logo">Spicy <span>Masti</span></div>
+  <div class="splash-sub">Street Food & More</div>
+  <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">
+    Spicy <span>Masti</span>
+    <small>Street Food & More</small>
+  </div>
+  <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+</div>
+
+<!-- NAV MENU -->
+<div class="nav-menu" id="navMenu">
+  <a href="https://maps.app.goo.gl/5eFEcnGLxuixM33e6">
+    <div class="nav-item"><span class="nav-icon">📍</span> Location</div>
+  </a>
+  <a href="offer.html">
+    <div class="nav-item"><span class="nav-icon">🏷️</span> Offers</div>
+  </a>
+  <a href="help.html">
+    <div class="nav-item"><span class="nav-icon">❓</span> Help</div>
+  </a>
+  <a href="Setting.html">
+    <div class="nav-item"><span class="nav-icon">⚙️</span> Settings</div>
+  </a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-tag">🌶️ Desi Flavours</div>
+    <div class="hero-247">🕐 Open 24/7</div>
+  </div>
+  <h2>Bold Food,<br/><span>Bolder Taste.</span></h2>
+  <p>Fresh made • Street style • Full of flavour</p>
+</div>
+
+<!-- CATEGORY SCROLL PILLS -->
+<div class="cat-scroll" id="catScroll">
+  <div class="cat-pill active" onclick="filterCat('all', this)">🍽️ All</div>
+  <div class="cat-pill" onclick="filterCat('burger', this)">🍔 Burger</div>
+  <div class="cat-pill" onclick="filterCat('maggi', this)">🍜 Maggi</div>
+  <div class="cat-pill" onclick="filterCat('snacks', this)">🍿 Snacks</div>
+  <div class="cat-pill" onclick="filterCat('breads', this)">🥖 Breads</div>
+  <div class="cat-pill" onclick="filterCat('pasta', this)">🍝 Pasta</div>
+  <div class="cat-pill" onclick="filterCat('shakes', this)">🥤 Shakes</div>
+  <div class="cat-pill" onclick="filterCat('soup', this)">🥣 Soup</div>
+  <div class="cat-pill" onclick="filterCat('dessert', this)">🍮 Dessert</div>
+</div>
+
+<!-- BURGER -->
+<div class="category" id="burger">
+  <div class="category-title" onclick="toggle(this)">
+    <div class="cat-left"><span class="cat-emoji">🍔</span> Burger <span class="item-count">4 items</span></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="items">
+    <div class="image-item">
+      <div class="item-info">
+        <div class="item-name"><span class="veg-dot"></span>Aloo Tikki Burger</div>
+        <div class="item-price">₹40</div>
+      </div>
+      <img src="https://tinyurl.com/yrubt2t9" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info">
+        <div class="item-name"><span class="veg-dot"></span>Cheese Burger</div>
+        <div class="item-price">₹55</div>
+      </div>
+      <img src="https://tinyurl.com/yb6f6u82" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info">
+        <div class="item-name"><span class="veg-dot"></span>Double Tikki Burger</div>
+        <div class="item-price">₹60</div>
+      </div>
+      <img src="https://tinyurl.com/5dfncah4" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info">
+        <div class="item-name"><span class="veg-dot"></span>French Burger</div>
+        <div class="item-price">₹80</div>
+      </div>
+      <img src="https://tinyurl.com/58bezydd" class="food-img" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- MAGGI -->
+<div class="category" id="maggi">
+  <div class="category-title" onclick="toggle(this)">
+    <div class="cat-left"><span class="cat-emoji">🍜</span> Maggi <span class="item-count">6 items</span></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="items">
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Masala Maggi</div><div class="item-price">₹30</div></div>
+      <img src="https://tinyurl.com/4u45p4b2" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Double Masala Maggi</div><div class="item-price">₹35</div></div>
+      <img src="" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Veggie Maggi</div><div class="item-price">₹45</div></div>
+      <img src="https://tinyurl.com/3mafz6wm" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Cheese Maggi</div><div class="item-price">₹60</div></div>
+      <img src="https://tinyurl.com/yusachuc" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Chilli Hot Garlic Maggi</div><div class="item-price">₹70</div></div>
+      <img src="https://tinyurl.com/34k5xxce" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Maggi Delight</div><div class="item-price">₹80</div></div>
+      <img src="https://tinyurl.com/3nmrktkw" class="food-img" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- SNACKS -->
+<div class="category" id="snacks">
+  <div class="category-title" onclick="toggle(this)">
+    <div class="cat-left"><span class="cat-emoji">🍿</span> Snacks <span class="item-count">7 items</span></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="items">
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Plain Sweetcorn</div><div class="item-price">₹40</div></div>
+      <img src="" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Classic Sweetcorn</div><div class="item-price">₹50</div></div>
+      <img src="https://tinyurl.com/zz5yhdr4" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Butter Masala Sweetcorn</div><div class="item-price">₹50</div></div>
+      <img src="https://tinyurl.com/yzp8brkb" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Tandoori Sweetcorn</div><div class="item-price">₹60</div></div>
+      <img src="https://tinyurl.com/yremazvx" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>French Fries</div><div class="item-price">₹80</div></div>
+      <img src="https://tinyurl.com/ywse7d4h" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Peri Peri Fries</div><div class="item-price">₹90</div></div>
+      <img src="https://tinyurl.com/562vp3af" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Cheese Fries</div><div class="item-price">₹120</div></div>
+      <img src="https://tinyurl.com/mr3cu32t" class="food-img" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- BREADS -->
+<div class="category" id="breads">
+  <div class="category-title" onclick="toggle(this)">
+    <div class="cat-left"><span class="cat-emoji">🥖</span> Breads <span class="item-count">3 items</span></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="items">
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Cheese Garlic Bread</div><div class="item-price">₹80</div></div>
+      <img src="" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Sweetcorn Garlic Bread</div><div class="item-price">₹90</div></div>
+      <img src="https://tinyurl.com/2ybjpyrn" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Stuffed Garlic Bread</div><div class="item-price">₹100</div></div>
+      <img src="" class="food-img" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- PASTA -->
+<div class="category" id="pasta">
+  <div class="category-title" onclick="toggle(this)">
+    <div class="cat-left"><span class="cat-emoji">🍝</span> Pasta <span class="item-count">6 items</span></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="items">
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Vegetables Macaroni</div><div class="item-price">₹80 · ₹110</div></div>
+      <img src="https://tinyurl.com/2u5tukra" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Ghar Jesa Pasta</div><div class="item-price">₹80 · ₹110</div></div>
+      <img src="https://tinyurl.com/yadcu236" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>White Sauce Pasta</div><div class="item-price">₹110 · ₹140</div></div>
+      <img src="https://tinyurl.com/y434z5hy" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Red Sauce Pasta</div><div class="item-price">₹110 · ₹140</div></div>
+      <img src="https://tinyurl.com/bdfhs6a7" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Mix Sauce Pasta</div><div class="item-price">₹110 · ₹140</div></div>
+      <img src="https://tinyurl.com/56h3bxh9" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Pasta Delight</div><div class="item-price">₹130 · ₹160</div></div>
+      <img src="https://tinyurl.com/ms55azzt" class="food-img" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- SHAKES -->
+<div class="category" id="shakes">
+  <div class="category-title" onclick="toggle(this)">
+    <div class="cat-left"><span class="cat-emoji">🥤</span> Shakes <span class="item-count">5 items</span></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="items">
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Iced Americano</div><div class="item-price">₹80</div></div>
+      <img src="https://tinyurl.com/47fy4cfc" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Cold Coffee Shake</div><div class="item-price">₹100</div></div>
+      <img src="https://tinyurl.com/5ewfwb6m" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Oreo Shake</div><div class="item-price">₹110</div></div>
+      <img src="https://tinyurl.com/cah7u96v" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>KitKat Shake</div><div class="item-price">₹110</div></div>
+      <img src="" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Chocolate Shake</div><div class="item-price">₹120</div></div>
+      <img src="https://tinyurl.com/yc435uyb" class="food-img" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- SOUP -->
+<div class="category" id="soup">
+  <div class="category-title" onclick="toggle(this)">
+    <div class="cat-left"><span class="cat-emoji">🥣</span> Soup <span class="item-count">3 items</span></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="items">
+    <div class="image-item">
+      <div class="item-info"><div class="it
