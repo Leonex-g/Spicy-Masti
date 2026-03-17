@@ -626,4 +626,92 @@ footer strong { color: #fff; }
   </div>
   <div class="items">
     <div class="image-item">
-      <div class="item-info"><div class="it
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Tomato Soup</div><div class="item-price">₹50</div></div>
+      <img src="https://tinyurl.com/a6tsj8ew" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Mix Veg Soup</div><div class="item-price">₹50</div></div>
+      <img src="https://tinyurl.com/4xcr62a7" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Hot &amp; Sour</div><div class="item-price">₹50</div></div>
+      <img src="https://tinyurl.com/yxwcxcy6" class="food-img" loading="lazy">
+    </div>
+  </div>
+</div>
+ 
+<!-- DESSERT -->
+<div class="category" id="dessert">
+  <div class="category-title" onclick="toggle(this)">
+    <div class="cat-left"><span class="cat-emoji">🍮</span> Dessert <span class="item-count">1 item</span></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="items">
+    <div class="image-item">
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Gulab Jamun (3 pcs)</div><div class="item-price">₹50</div></div>
+      <img src="https://tinyurl.com/ype23ptn" class="food-img" loading="lazy">
+    </div>
+  </div>
+</div>
+ 
+<!-- FOOTER -->
+  <footer>
+  <strong>Spicy Masti</strong> &nbsp;·&nbsp; © 2026 All Rights Reserved
+</footer>
+ 
+<script>
+// Splash — lock scroll while visible, unlock after
+document.body.style.overflow = 'hidden';
+setTimeout(function(){
+  document.getElementById('splash').classList.add('hide');
+  setTimeout(()=> {
+    document.getElementById('splash').style.display = 'none';
+    document.body.style.overflow = '';
+  }, 650);
+}, 2400);
+ 
+// Toggle category
+function toggle(el){
+  const items = el.nextElementSibling;
+  const arrow = el.querySelector('.arrow');
+  items.classList.toggle('hide');
+  arrow.classList.toggle('rotate');
+}
+ 
+// Hamburger menu
+function toggleMenu(){
+  const menu = document.getElementById('navMenu');
+  const btn  = document.getElementById('menuBtn');
+  const open = menu.style.display === 'block';
+  menu.style.display = open ? 'none' : 'block';
+  btn.classList.toggle('open', !open);
+}
+ 
+// Close menu on outside click
+document.addEventListener('click', function(e){
+  const menu = document.getElementById('navMenu');
+  const btn  = document.getElementById('menuBtn');
+  if(menu.style.display === 'block' && !menu.contains(e.target) && !btn.contains(e.target)){
+    menu.style.display = 'none';
+    btn.classList.remove('open');
+  }
+});
+ 
+// Filter to single category or show all
+function filterCat(id, pill){
+  const allCats = document.querySelectorAll('.category');
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+  if(id === 'all'){
+    allCats.forEach(c => { c.style.display = 'block'; });
+  } else {
+    allCats.forEach(c => {
+      c.style.display = (c.id === id) ? 'block' : 'none';
+    });
+    window.scrollTo({ top: 120, behavior: 'smooth' });
+  }
+}
+</script>
+ 
+</body>
+</html>
