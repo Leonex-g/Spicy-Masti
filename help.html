@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Help & Support – Spicy Masti</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+
+:root {
+  --red: #e63946;
+  --orange: #f4a261;
+  --green: #2a9d5c;
+  --dark: #1a1a1a;
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --border: #dde4ed;
+  --text: #1e2a38;
+  --muted: #7a8899;
+  --blue: #3a7bd5;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding-top: 68px;
+  animation: fadeIn 0.5s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 68px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--dark);
+}
+.logo span { color: var(--red); }
+.logo small {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: -2px;
+}
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  transition: all 0.2s;
+}
+.back-btn:hover { border-color: var(--red); color: var(--red); }
+
+/* PAGE */
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #1e2a38 0%, #2c3e55 100%);
+  border-radius: 20px;
+  padding: 30px 24px;
+  color: #fff;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '❓';
+  position: absolute;
+  right: 20px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 80px;
+  opacity: 0.08;
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: #a8c0d6;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.hero h1 span { color: var(--orange); }
+.hero p { font-size: 13px; color: #8fa8be; }
+
+/* CALL CARD */
+.call-card {
+  background: var(--green);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.call-left { display: flex; align-items: center; gap: 14px; }
+.call-icon {
+  width: 46px; height: 46px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.call-text h3 { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 2px; }
+.call-text p  { font-size: 12px; color: rgba(255,255,255,0.7); }
+.call-btn {
+  flex-shrink: 0;
+  background: #fff;
+  color: var(--green);
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+.call-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,0.16); }
+
+/* SECTION LABEL */
+.section-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  padding-left: 2px;
+}
+
+/* FAQ */
+.faq-group { margin-bottom: 24px; }
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.faq-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+.faq-item.open { border-color: #b8cfe8; }
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+.faq-q-left { display: flex; align-items: center; gap: 10px; }
+.faq-badge {
+  font-size: 16px;
+  width: 34px; height: 34px;
+  background: var(--bg);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.faq-chevron {
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  stroke: var(--muted);
+  transition: transform 0.25s;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.32s ease, padding 0.25s;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.75;
+  padding: 0 18px 0 62px;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 18px 16px 62px; }
+
+/* FORM */
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px 20px;
+  margin-bottom: 24px;
+}
+.form-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.form-card > p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.form-row { margin-bottom: 14px; }
+.form-row label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition: border 0.2s, background 0.2s;
+  resize: none;
+}
+.form-row input::placeholder,
+.form-row textarea::placeholder { color: #b0bec8; }
+.form-row input:focus,
+.form-row textarea:focus { border-color: var(--blue); background: #fff; }
+
+.upload-area {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+.upload-area:hover, .upload-area.dragover { border-color: var(--blue); background: #eaf1fb; }
+.upload-area input[type="file"] {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer;
+  width: 100%; height: 100%;
+  padding: 0; border: none; background: none;
+}
+.upload-icon { font-size: 28px; margin-bottom: 6px; }
+.upload-text { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.upload-sub  { font-size: 11px; color: var(--muted); }
+
+.preview-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.preview-wrap { position: relative; width: 64px; height: 64px; }
+.preview-img {
+  width: 64px; height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1.5px solid var(--border);
+}
+.preview-remove {
+  position: absolute; top: -5px; right: -5px;
+  width: 18px; height: 18px;
+  background: var(--red); color: #fff;
+  border-radius: 50%; font-size: 10px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-weight: 800; z-index: 1;
+}
+
+.req { color: var(--red); margin-left: 2px; }
+.field-error {
+  font-size: 11px;
+  color: var(--red);
+  font-weight: 600;
+  margin-top: 5px;
+  min-height: 14px;
+}
+.input-invalid { border-color: var(--red) !important; background: #fff5f5 !important; }
+.toast-error {
+  display: none;
+  background: var(--red);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin-top: 12px;
+  text-align: center;
+}
+.toast-error.show { display: block; animation: fadeIn 0.4s ease; }
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #1e2a38, #2c3e55);
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.03em;
+}
+.submit-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,42,56,0.25); }
+.submit-btn:active { transform: translateY(0); }
+
+.toast {
+  display: none;
+  background: var(--green);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin-top: 12px;
+  text-align: center;
+}
+.toast.show { display: block; animation: fadeIn 0.4s ease; }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 24px 20px;
+  background: var(--dark);
+  color: #555;
+  font-size: 12px;
+  margin-top: 10px;
+  letter-spacing: 0.04em;
+}
+footer strong { color: #fff; }
+
+</style>
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("TKRMeew9fvQrl0Z44-BhJ");</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">
+    Spicy <span>Masti</span>
+    <small>Help & Support</small>
+  </div>
+  <a href="index.html" class="back-btn">← Menu</a>
+</div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">Support Centre</div>
+    <h1>How can we <span>help you?</span></h1>
+    <p>Find answers below or get in touch with us directly.</p>
+  </div>
+
+  <!-- CALL CARD -->
+  <div class="call-card">
+    <div class="call-left">
+      <div class="call-icon">📞</div>
+      <div class="call-text">
+        <h3>Call Us Directly</h3>
+        <p>Available 24/7 · We're always here</p>
+      </div>
+    </div>
+    <a href="tel:+917290945445" class="call-btn">Call Now</a>
+  </div>
+
+  <!-- FAQ ORDER -->
+  <div class="section-label">🛒 Order Related</div>
+  <div class="faq-group">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-left"><div class="faq-badge">📦</div> Can I customise my order?</div>
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">Yes! Just mention your preferences when ordering — we'll do our best to accommodate. You can also call us directly and we'll sort it out.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-left"><div class="faq-badge">⏱️</div> How long does my order take?</div>
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">Most orders are ready within 10–20 minutes. During peak hours it may take slightly longer. We'll always keep you informed.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-left"><div class="faq-badge">❌</div> Can I cancel my order?</div>
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">Cancellations are accepted only before preparation begins. Please call us immediately at +91 72909 45445 to request a cancellation.</div>
+    </div>
+  </div>
+
+  <!-- FAQ TIMINGS -->
+  <div class="section-label">📍 Timings & Location</div>
+  <div class="faq-group">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-left"><div class="faq-badge">🕐</div> What are your opening hours?</div>
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">Spicy Masti is open 24/7 — every day, all day and night. No holidays, no closing time. We're always here for you! 🌶️</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-left"><div class="faq-badge">🗺️</div> Where are you located?</div>
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">You can find our exact location on Google Maps. Tap the Location option in the main menu and it will open directions for you.</div>
+    </div>
+  </div>
+
+  <!-- FAQ PAYMENT -->
+  <div class="section-label">💳 Payment Methods</div>
+  <div class="faq-group">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-left"><div class="faq-badge">💵</div> What payment methods do you accept?</div>
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">We accept Cash, UPI (GPay, PhonePe, Paytm), and all major debit/credit cards. No extra charges on any payment method.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-left"><div class="faq-badge">🔁</div> What if I was charged incorrectly?</div>
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">Please call us immediately at +91 72909 45445 or use the contact form below with your payment screenshot and we'll resolve it right away.</div>
+    </div>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="section-label">✉️ Send Us a Message</div>
+  <div class="form-card">
+    <h3>Still need help?</h3>
+    <p>All fields are required. Fill in the form and we'll get back to you soon.</p>
+
+    <div class="form-row">
+      <label>Your Name <span class="req">*</span></label>
+      <input type="text" id="fname" placeholder="e.g. Rahul Sharma"/>
+      <div class="field-error" id="err-name"></div>
+    </div>
+
+    <div class="form-row">
+      <label>Phone Number <span class="req">*</span></label>
+      <input type="tel" id="fphone" placeholder="10-digit number e.g. 9876543210" maxlength="10"/>
+      <div class="field-error" id="err-phone"></div>
+    </div>
+
+    <div class="form-row">
+      <label>Gmail Address <span class="req">*</span></label>
+      <input type="email" id="fgmail" placeholder="e.g. yourname@gmail.com"/>
+      <div class="field-error" id="err-gmail"></div>
+    </div>
+
+    <div class="form-row">
+      <label>Describe your issue <span class="req">*</span></label>
+      <textarea id="fdesc" rows="4" placeholder="Tell us what happened or what you need help with..."></textarea>
+      <div class="field-error" id="err-desc"></div>
+    </div>
+
+    <div class="form-row">
+      <label>Attach Images <span class="req">*</span> <span style="font-weight:400;color:var(--muted)">(max 5)</span></label>
+      <div class="upload-area" id="uploadArea">
+        <input type="file" id="fileInput" accept="image/*" multiple onchange="handleFiles(this.files)"/>
+        <div class="upload-icon">🖼️</div>
+        <div class="upload-text">Tap to upload images</div>
+        <div class="upload-sub">JPG, PNG, WEBP · Max 5 images</div>
+      </div>
+      <div class="preview-grid" id="previewGrid"></div>
+      <div class="field-error" id="err-images"></div>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="submitForm()">Send Message →</button>
+    <div class="toast" id="toast">✅ Message sent! We'll get back to you soon.</div>
+    <div class="toast toast-error" id="toastError">❌ Failed to send. Please try again.</div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Spicy Masti</strong> &nbsp;·&nbsp; © 2026 All Rights Reserved
+</footer>
+
+<script>
+
+// FAQ toggle
+function toggleFaq(btn){
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+// Image previews
+let selectedFiles = [];
+
+function handleFiles(files){
+  const remaining = 5 - selectedFiles.length;
+  Array.from(files).slice(0, remaining).forEach(f => {
+    if(f.type.startsWith('image/')) selectedFiles.push(f);
+  });
+  renderPreviews();
+  if(selectedFiles.length > 0){
+    clearErr('err-images');
+    document.getElementById('uploadArea').style.borderColor = '';
+  }
+}
+
+function renderPreviews(){
+  const grid = document.getElementById('previewGrid');
+  grid.innerHTML = '';
+  selectedFiles.forEach((f, i) => {
+    const url = URL.createObjectURL(f);
+    const wrap = document.createElement('div');
+    wrap.className = 'preview-wrap';
+    wrap.innerHTML = `<img src="${url}" class="preview-img"/><div class="preview-remove" onclick="removeFile(${i})">✕</div>`;
+    grid.appendChild(wrap);
+  });
+}
+
+function removeFile(i){
+  selectedFiles.splice(i, 1);
+  renderPreviews();
+}
+
+// Drag & drop
+const ua = document.getElementById('uploadArea');
+ua.addEventListener('dragover',  e => { e.preventDefault(); ua.classList.add('dragover'); });
+ua.addEventListener('dragleave', () => ua.classList.remove('dragover'));
+ua.addEventListener('drop', e => {
+  e.preventDefault();
+  ua.classList.remove('dragover');
+  handleFiles(e.dataTransfer.files);
+});
+
+// Clear error
+function clearErr(id){ document.getElementById(id).textContent = ''; }
+function showErr(id, msg){
+  document.getElementById(id).textContent = msg;
+}
+function setInvalid(el){ el.classList.add('input-invalid'); }
+function setValid(el)  { el.classList.remove('input-invalid'); }
+
+// Submit with validation + EmailJS
+function submitForm(){
+  const nameEl  = document.getElementById('fname');
+  const phoneEl = document.getElementById('fphone');
+  const gmailEl = document.getElementById('fgmail');
+  const descEl  = document.getElementById('fdesc');
+
+  const name  = nameEl.value.trim();
+  const phone = phoneEl.value.trim();
+  const gmail = gmailEl.value.trim();
+  const desc  = descEl.value.trim();
+
+  // Clear previous errors
+  ['err-name','err-phone','err-gmail','err-desc'].forEach(id => clearErr(id));
+  [nameEl, phoneEl, gmailEl, descEl].forEach(el => setValid(el));
+
+  let valid = true;
+
+  if(!name){
+    showErr('err-name', 'Please enter your name.');
+    setInvalid(nameEl); valid = false;
+  }
+  if(!phone){
+    showErr('err-phone', 'Please enter your phone number.');
+    setInvalid(phoneEl); valid = false;
+  } else if(!/^[0-9]{10}$/.test(phone)){
+    showErr('err-phone', 'Phone number must be exactly 10 digits.');
+    setInvalid(phoneEl); valid = false;
+  }
+  if(!gmail){
+    showErr('err-gmail', 'Please enter your Gmail address.');
+    setInvalid(gmailEl); valid = false;
+  } else if(!/^[^\s@]+@gmail\.com$/i.test(gmail)){
+    showErr('err-gmail', 'Please enter a valid Gmail address.');
+    setInvalid(gmailEl); valid = false;
+  }
+  if(!desc){
+    showErr('err-desc', 'Please describe your issue.');
+    setInvalid(descEl); valid = false;
+  }
+
+  if(selectedFiles.length === 0){
+    showErr('err-images', 'Please attach at least one image.');
+    document.getElementById('uploadArea').style.borderColor = 'var(--red)';
+    valid = false;
+  } else {
+    document.getElementById('uploadArea').style.borderColor = '';
+    clearErr('err-images');
+  }
+
+  if(!valid) return;
+
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const templateParams = {
+    name:    name,
+    phone:   phone,
+    gmail:   gmail,
+    message: desc
+  };
+
+  // ── EmailJS Send ──
+  emailjs.send('service_arzyuym', 'template_slqoir7', templateParams)
+    .then(function(){
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+      nameEl.value = ''; phoneEl.value = '';
+      gmailEl.value = ''; descEl.value = '';
+      selectedFiles = [];
+      renderPreviews();
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }, function(error){
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+      console.error('EmailJS error:', error);
+      const toastErr = document.getElementById('toastError');
+      toastErr.classList.add('show');
+      setTimeout(() => toastErr.classList.remove('show'), 4000);
+    });
+}
+
+</script>
+</body>
+</html>
