@@ -78,6 +78,19 @@ body {
   100% { width: 100%; }
 }
 
+/* ── SCROLL PROGRESS ── */
+.scroll-progress {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--orange));
+  z-index: 1001;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.08s linear;
+}
+
 /* ── HEADER ── */
 .header {
   position: fixed;
@@ -213,7 +226,6 @@ a { text-decoration: none; color: inherit; }
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 20px;
-  margin-bottom: 10px;
 }
 .hero h2 {
   font-family: 'Playfair Display', serif;
@@ -362,6 +374,9 @@ footer strong { color: #fff; }
 </style>
 </head>
 <body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- SPLASH -->
 <div id="splash">
@@ -639,7 +654,7 @@ footer strong { color: #fff; }
     </div>
   </div>
 </div>
- 
+
 <!-- DESSERT -->
 <div class="category" id="dessert">
   <div class="category-title" onclick="toggle(this)">
@@ -653,13 +668,14 @@ footer strong { color: #fff; }
     </div>
   </div>
 </div>
- 
+
 <!-- FOOTER -->
-  <footer>
+<footer>
   <strong>Spicy Masti</strong> &nbsp;·&nbsp; © 2026 All Rights Reserved
 </footer>
- 
+
 <script>
+
 // Splash — lock scroll while visible, unlock after
 document.body.style.overflow = 'hidden';
 setTimeout(function(){
@@ -669,7 +685,7 @@ setTimeout(function(){
     document.body.style.overflow = '';
   }, 650);
 }, 2400);
- 
+
 // Toggle category
 function toggle(el){
   const items = el.nextElementSibling;
@@ -677,7 +693,7 @@ function toggle(el){
   items.classList.toggle('hide');
   arrow.classList.toggle('rotate');
 }
- 
+
 // Hamburger menu
 function toggleMenu(){
   const menu = document.getElementById('navMenu');
@@ -686,7 +702,7 @@ function toggleMenu(){
   menu.style.display = open ? 'none' : 'block';
   btn.classList.toggle('open', !open);
 }
- 
+
 // Close menu on outside click
 document.addEventListener('click', function(e){
   const menu = document.getElementById('navMenu');
@@ -696,7 +712,7 @@ document.addEventListener('click', function(e){
     btn.classList.remove('open');
   }
 });
- 
+
 // Filter to single category or show all
 function filterCat(id, pill){
   const allCats = document.querySelectorAll('.category');
@@ -711,7 +727,17 @@ function filterCat(id, pill){
     window.scrollTo({ top: 120, behavior: 'smooth' });
   }
 }
+
+// Scroll progress bar
+window.addEventListener('scroll', function(){
+  const doc = document.documentElement;
+  const scrolled = doc.scrollTop || document.body.scrollTop;
+  const total = doc.scrollHeight - doc.clientHeight;
+  const pct = total > 0 ? (scrolled / total) * 100 : 0;
+  document.getElementById('scrollProgress').style.width = pct + '%';
+});
+
 </script>
- 
+
 </body>
 </html>
