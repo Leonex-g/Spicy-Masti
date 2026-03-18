@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Settings – Spicy Masti</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+
+/* ── LIGHT THEME ── */
+:root {
+  --bg:      #f5f4f0;
+  --surface: #ffffff;
+  --surface2:#f0ede8;
+  --border:  #e8e3dc;
+  --text:    #1c1c1c;
+  --sub:     #888;
+  --muted:   #aaa;
+  --red:     #e63946;
+  --orange:  #f4a261;
+  --dark:    #1a1a1a;
+  --header-bg: #ffffff;
+  --header-border: #e8e3dc;
+}
+
+/* ── DARK THEME ── */
+[data-theme="dark"] {
+  --bg:      #111114;
+  --surface: #1c1c21;
+  --surface2:#242429;
+  --border:  #2e2e35;
+  --text:    #f0f0f2;
+  --sub:     #9999a8;
+  --muted:   #6b6b78;
+  --header-bg: rgba(17,17,20,0.95);
+  --header-border: #2e2e35;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { transition: background 0.35s, color 0.35s; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding-top: 68px;
+  min-height: 100vh;
+  transition: background 0.35s, color 0.35s;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ── HEADER ── */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 68px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  transition: background 0.35s, border-color 0.35s;
+  backdrop-filter: blur(10px);
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text);
+}
+.logo span { color: var(--red); }
+.logo small {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: -2px;
+}
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sub);
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.back-btn:hover { border-color: var(--red); color: var(--red); }
+
+/* ── PAGE ── */
+.page {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 28px 16px 70px;
+  animation: rise 0.45s cubic-bezier(0.23,1,0.32,1) both;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PAGE HEADER ── */
+.page-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.page-icon {
+  width: 52px; height: 52px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+  transition: background 0.35s, border-color 0.35s;
+}
+.page-hero-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text);
+}
+.page-hero-text p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ── SECTION ── */
+.section { margin-bottom: 26px; }
+.section-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  padding-left: 2px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: background 0.35s, border-color 0.35s;
+}
+.card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  gap: 14px;
+  transition: border-color 0.35s;
+}
+.card-row:last-child { border-bottom: none; }
+
+.row-left { display: flex; align-items: center; gap: 13px; flex: 1; }
+.row-icon {
+  width: 38px; height: 38px;
+  background: var(--surface2);
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+  transition: background 0.35s;
+}
+.row-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+.row-sub {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+/* ── SWITCH ── */
+.switch {
+  position: relative;
+  width: 48px; height: 26px;
+  flex-shrink: 0;
+}
+.switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+.switch-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+.switch input:checked + .switch-track {
+  background: var(--red);
+  border-color: var(--red);
+}
+.switch-track::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+.switch input:checked + .switch-track::after { transform: translateX(22px); }
+
+/* ── DARK MODE TOGGLE SPECIAL ── */
+.dark-toggle-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: background 0.35s, border-color 0.35s;
+}
+.dark-toggle-left { display: flex; align-items: center; gap: 14px; }
+.dark-icon {
+  width: 46px; height: 46px;
+  border-radius: 14px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  transition: background 0.35s;
+}
+.dark-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+}
+.dark-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ── LANGUAGE OPTIONS ── */
+.lang-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.lang-btn {
+  flex: 1;
+  min-width: 100px;
+  padding: 14px 10px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: var(--surface2);
+  color: var(--sub);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.lang-btn .lang-flag { font-size: 26px; }
+.lang-btn .lang-native { font-size: 12px; color: var(--muted); font-weight: 500; }
+.lang-btn:hover { border-color: var(--red); color: var(--text); }
+.lang-btn.active {
+  border-color: var(--red);
+  background: var(--surface);
+  color: var(--red);
+}
+.lang-btn.active .lang-native { color: var(--red); opacity: 0.7; }
+
+/* ── VERSION INFO ── */
+.version-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.35s, border-color 0.35s;
+}
+.version-left { display: flex; align-items: center; gap: 12px; }
+.version-icon {
+  width: 38px; height: 38px;
+  background: var(--surface2);
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  transition: background 0.35s;
+}
+.version-title { font-size: 14px; font-weight: 700; color: var(--text); }
+.version-tag {
+  font-size: 11px;
+  background: var(--surface2);
+  color: var(--muted);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 24px 20px;
+  background: var(--dark);
+  color: #555;
+  font-size: 12px;
+  margin-top: 10px;
+  letter-spacing: 0.04em;
+}
+footer strong { color: #888; }
+
+</style>
+<script src="sm-settings.js"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">
+    Spicy <span>Masti</span>
+    <small data-t="logo.sub.settings">Settings</small>
+  </div>
+  <a href="index.html" class="back-btn" data-t="nav.back">← Menu</a>
+</div>
+
+<div class="page">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-icon">⚙️</div>
+    <div class="page-hero-text">
+      <h1 data-t="set.hero.h1">Settings</h1>
+      <p data-t="set.hero.p">Personalise your Spicy Masti experience</p>
+    </div>
+  </div>
+
+  <!-- APPEARANCE -->
+  <div class="section">
+    <div class="section-label"><span data-t="set.appear">🌙 Appearance</span></div>
+    <div class="dark-toggle-card" id="darkCard">
+      <div class="dark-toggle-left">
+        <div class="dark-icon" id="darkIcon">☀️</div>
+        <div>
+          <div class="dark-title" id="darkTitle" data-t="set.light.title">Light Mode</div>
+          <div class="dark-sub" id="darkSub" data-t="set.light.sub">Tap to switch to dark mode</div>
+        </div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="darkSwitch" onchange="toggleDark()"/>
+        <div class="switch-track"></div>
+      </label>
+    </div>
+  </div>
+
+  <!-- LANGUAGE -->
+  <div class="section">
+    <div class="section-label" data-t="set.lang">🌐 Language</div>
+    <div class="card">
+      <div class="card-row" style="flex-direction:column; align-items:flex-start; gap:14px;">
+        <div class="row-left">
+          <div class="row-icon">🗣️</div>
+          <div>
+            <div class="row-title" id="langTitle" data-t="set.lang.title">Choose your language</div>
+            <div class="row-sub" id="langSub" data-t="set.lang.sub">Select the language you prefer</div>
+          </div>
+        </div>
+        <div class="lang-options" style="width:100%;">
+          <button class="lang-btn active" id="btn-en" onclick="setLang('en')">
+            <span class="lang-flag">🇬🇧</span>
+            English
+            <span class="lang-native">English</span>
+          </button>
+          <button class="lang-btn" id="btn-hi" onclick="setLang('hi')">
+            <span class="lang-flag">🇮🇳</span>
+            हिंदी
+            <span class="lang-native">Hindi</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APP INFO -->
+  <div class="section">
+    <div class="section-label" data-t="set.info">ℹ️ App Info</div>
+    <div class="version-card">
+      <div class="version-left">
+        <div class="version-icon">🌶️</div>
+        <div>
+          <div class="version-title">Spicy Masti</div>
+          <div class="row-sub" data-t="set.info.sub">Cloud Kitchen · Faridabad</div>
+        </div>
+      </div>
+      <div class="version-tag">v1.0</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Spicy Masti</strong> &nbsp;·&nbsp; © 2026 All Rights Reserved
+</footer>
+
+<script>
+// Init shared settings
+const s = SM.init();
+let currentLang = s.lang;
+let isDark = s.dark;
+
+// Set switch states
+document.getElementById('darkSwitch').checked = isDark;
+document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+const activeLangBtn = document.getElementById('btn-' + currentLang);
+if(activeLangBtn) activeLangBtn.classList.add('active');
+
+// Dark mode toggle
+function toggleDark(){
+  isDark = document.getElementById('darkSwitch').checked;
+  SM.applyTheme(isDark);
+  SM.applyLang(currentLang);
+  SM.saveSettings(currentLang, isDark);
+  updateDarkLabel();
+}
+
+function updateDarkLabel(){
+  const tr = SM.translations[currentLang];
+  document.getElementById('darkIcon').textContent  = isDark ? '🌙' : '☀️';
+  document.getElementById('darkTitle').textContent = isDark ? tr['set.dark.title'] : tr['set.light.title'];
+  document.getElementById('darkSub').textContent   = isDark ? tr['set.dark.sub']   : tr['set.light.sub'];
+}
+
+// Language switch
+function setLang(lang){
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + lang).classList.add('active');
+  SM.applyLang(lang);
+  SM.saveSettings(currentLang, isDark);
+  updateDarkLabel();
+}
+
+// Init label state
+updateDarkLabel();
+</script>
+</body>
+</html>
