@@ -202,20 +202,7 @@ a { text-decoration: none; color: inherit; }
   justify-content: space-between;
   margin-bottom: 10px;
 }
-.hero-247 {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(244, 162, 97, 0.18);
-  border: 1px solid rgba(244, 162, 97, 0.45);
-  color: var(--orange);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 5px 11px;
-  border-radius: 20px;
-}
+
 .hero-tag {
   display: inline-block;
   background: var(--red);
@@ -371,6 +358,146 @@ footer strong { color: #fff; }
   .food-img { width: 68px; height: 68px; }
 }
 
+
+/* ── DARK THEME ── */
+[data-theme="dark"] {
+  --bg:     #111114;
+  --card:   #1c1c21;
+  --border: #2e2e35;
+  --text:   #f0f0f2;
+  --muted:  #6b6b78;
+}
+[data-theme="dark"] .header { background: rgba(17,17,20,0.95); }
+[data-theme="dark"] .nav-menu { background: #1c1c21; }
+[data-theme="dark"] .nav-item { background: #242429; color: #f0f0f2; border-color: #2e2e35; }
+[data-theme="dark"] .category { background: #1c1c21; border-color: #2e2e35; }
+[data-theme="dark"] .category-title { background: #1c1c21; color: #f0f0f2; }
+[data-theme="dark"] .category-title:hover { background: #242429; }
+[data-theme="dark"] .image-item:hover { background: #242429; }
+[data-theme="dark"] .image-item { border-color: #2e2e35; }
+[data-theme="dark"] .cat-pill { background: #1c1c21; border-color: #2e2e35; color: #9999a8; }
+[data-theme="dark"] .cat-pill.active { background: var(--red); border-color: var(--red); color: #fff; }
+[data-theme="dark"] footer { background: #0d0d10; }
+[data-theme="dark"] .item-count { background: #2e2e35; color: #9999a8; }
+[data-theme="dark"] .hero { background: linear-gradient(135deg, #0d0d10 0%, #1a1a1a 100%); }
+
+
+
+  70%  { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+
+
+  80%  { transform: scale(2.6); opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+
+/* ── OPEN 24/7 BADGE ── */
+.hero-247 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(34,197,94,0.04));
+  border: 1.5px solid rgba(34,197,94,0.6);
+  color: #4ade80;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 20px;
+  box-shadow:
+    0 0 10px rgba(34,197,94,0.25),
+    0 0 24px rgba(34,197,94,0.12),
+    inset 0 0 10px rgba(34,197,94,0.06);
+}
+
+/* Glow streak under the badge */
+.hero-247::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(34,197,94,0.7) 0%, transparent 75%);
+  filter: blur(3px);
+  animation: underGlow 2s ease-in-out infinite;
+}
+
+/* Animated border shimmer */
+.hero-247::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 20px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(34,197,94,0.9) 40%,
+    rgba(134,239,172,1) 50%,
+    rgba(34,197,94,0.9) 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  padding: 1.5px;
+  animation: shimmerBorder 2.5s linear infinite;
+}
+
+@keyframes shimmerBorder {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes underGlow {
+  0%, 100% { opacity: 0.5; transform: translateX(-50%) scaleX(0.8); }
+  50%       { opacity: 1;   transform: translateX(-50%) scaleX(1.2); }
+}
+
+/* ── LIVE DOT ── */
+.live-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0 0 6px 2px rgba(34,197,94,0.8);
+  animation: dotGlow 2s ease-in-out infinite;
+}
+.live-dot::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgba(34,197,94,0.3);
+  animation: dotRing 2s ease-in-out infinite;
+}
+.live-dot::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: rgba(34,197,94,0.1);
+  animation: dotRing 2s ease-in-out infinite 0.4s;
+}
+@keyframes dotGlow {
+  0%, 100% { box-shadow: 0 0 5px 2px rgba(34,197,94,0.7); background: #22c55e; }
+  50%       { box-shadow: 0 0 12px 4px rgba(74,222,128,1); background: #86efac; }
+}
+@keyframes dotRing {
+  0%   { transform: scale(1); opacity: 0.7; }
+  80%  { transform: scale(2.6); opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
 </style>
 </head>
 <body>
@@ -389,7 +516,7 @@ footer strong { color: #fff; }
 <div class="header">
   <div class="logo">
     Spicy <span>Masti</span>
-    <small>Street Food & More</small>
+    <small data-t="logo.sub">Street Food & More</small>
   </div>
   <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">
     <div class="bar"></div>
@@ -401,40 +528,43 @@ footer strong { color: #fff; }
 <!-- NAV MENU -->
 <div class="nav-menu" id="navMenu">
   <a href="https://maps.app.goo.gl/5eFEcnGLxuixM33e6">
-    <div class="nav-item"><span class="nav-icon">📍</span> Location</div>
+    <div class="nav-item"><span class="nav-icon">📍</span> <span data-t="nav.location">Location</span></div>
   </a>
   <a href="offer.html">
-    <div class="nav-item"><span class="nav-icon">🏷️</span> Offers</div>
+    <div class="nav-item"><span class="nav-icon">🏷️</span> <span data-t="nav.offers">Offers</span></div>
   </a>
   <a href="help.html">
-    <div class="nav-item"><span class="nav-icon">❓</span> Help</div>
+    <div class="nav-item"><span class="nav-icon">❓</span> <span data-t="nav.help">Help</span></div>
   </a>
   <a href="Setting.html">
-    <div class="nav-item"><span class="nav-icon">⚙️</span> Settings</div>
+    <div class="nav-item"><span class="nav-icon">⚙️</span> <span data-t="nav.settings">Settings</span></div>
   </a>
 </div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-top">
-    <div class="hero-tag">🌶️ Desi Flavours</div>
-    <div class="hero-247">🕐 Open 24/7</div>
+    <div class="hero-tag" data-t="hero.tag">🌶️ Desi Flavours</div>
+    <div class="hero-247" data-t="hero.247">
+    <span class="live-dot"></span>
+    Open 24/7
+  </div>
   </div>
   <h2>Bold Food,<br/><span>Bolder Taste.</span></h2>
-  <p>Fresh made • Street style • Full of flavour</p>
+  <p data-t="hero.p">Fresh made • Street style • Full of flavour</p>
 </div>
 
 <!-- CATEGORY SCROLL PILLS -->
 <div class="cat-scroll" id="catScroll">
-  <div class="cat-pill active" onclick="filterCat('all', this)">🍽️ All</div>
-  <div class="cat-pill" onclick="filterCat('burger', this)">🍔 Burger</div>
-  <div class="cat-pill" onclick="filterCat('maggi', this)">🍜 Maggi</div>
-  <div class="cat-pill" onclick="filterCat('snacks', this)">🍿 Snacks</div>
-  <div class="cat-pill" onclick="filterCat('breads', this)">🥖 Breads</div>
-  <div class="cat-pill" onclick="filterCat('pasta', this)">🍝 Pasta</div>
-  <div class="cat-pill" onclick="filterCat('shakes', this)">🥤 Shakes</div>
-  <div class="cat-pill" onclick="filterCat('soup', this)">🥣 Soup</div>
-  <div class="cat-pill" onclick="filterCat('dessert', this)">🍮 Dessert</div>
+  <div class="cat-pill active" onclick="filterCat('all', this)" data-t="cat.all">🍽️ All</div>
+  <div class="cat-pill" onclick="filterCat('burger', this)" data-t="cat.burger">🍔 Burger</div>
+  <div class="cat-pill" onclick="filterCat('maggi', this)" data-t="cat.maggi">🍜 Maggi</div>
+  <div class="cat-pill" onclick="filterCat('snacks', this)" data-t="cat.snacks">🍿 Snacks</div>
+  <div class="cat-pill" onclick="filterCat('breads', this)" data-t="cat.breads">🥖 Breads</div>
+  <div class="cat-pill" onclick="filterCat('pasta', this)" data-t="cat.pasta">🍝 Pasta</div>
+  <div class="cat-pill" onclick="filterCat('shakes', this)" data-t="cat.shakes">🥤 Shakes</div>
+  <div class="cat-pill" onclick="filterCat('soup', this)" data-t="cat.soup">🥣 Soup</div>
+  <div class="cat-pill" onclick="filterCat('dessert', this)" data-t="cat.dessert">🍮 Dessert</div>
 </div>
 
 <!-- BURGER -->
@@ -446,28 +576,28 @@ footer strong { color: #fff; }
   <div class="items">
     <div class="image-item">
       <div class="item-info">
-        <div class="item-name"><span class="veg-dot"></span>Aloo Tikki Burger</div>
+        <div class="item-name"><span class="veg-dot"></span><span data-t="item.aloo.tikki">Aloo Tikki Burger</span></div>
         <div class="item-price">₹40</div>
       </div>
       <img src="https://tinyurl.com/yrubt2t9" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
       <div class="item-info">
-        <div class="item-name"><span class="veg-dot"></span>Cheese Burger</div>
+        <div class="item-name"><span class="veg-dot"></span><span data-t="item.cheese.burger">Cheese Burger</span></div>
         <div class="item-price">₹55</div>
       </div>
       <img src="https://tinyurl.com/yb6f6u82" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
       <div class="item-info">
-        <div class="item-name"><span class="veg-dot"></span>Double Tikki Burger</div>
+        <div class="item-name"><span class="veg-dot"></span><span data-t="item.double.tikki">Double Tikki Burger</span></div>
         <div class="item-price">₹60</div>
       </div>
       <img src="https://tinyurl.com/5dfncah4" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
       <div class="item-info">
-        <div class="item-name"><span class="veg-dot"></span>French Burger</div>
+        <div class="item-name"><span class="veg-dot"></span><span data-t="item.french.burger">French Burger</span></div>
         <div class="item-price">₹80</div>
       </div>
       <img src="https://tinyurl.com/58bezydd" class="food-img" loading="lazy">
@@ -483,27 +613,27 @@ footer strong { color: #fff; }
   </div>
   <div class="items">
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Masala Maggi</div><div class="item-price">₹30</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.masala.maggi">Masala Maggi</span></div><div class="item-price">₹30</div></div>
       <img src="https://tinyurl.com/4u45p4b2" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Double Masala Maggi</div><div class="item-price">₹35</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.double.masala.maggi">Double Masala Maggi</span></div><div class="item-price">₹35</div></div>
       <img src="" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Veggie Maggi</div><div class="item-price">₹45</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.veggie.maggi">Veggie Maggi</span></div><div class="item-price">₹45</div></div>
       <img src="https://tinyurl.com/3mafz6wm" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Cheese Maggi</div><div class="item-price">₹60</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.cheese.maggi">Cheese Maggi</span></div><div class="item-price">₹60</div></div>
       <img src="https://tinyurl.com/yusachuc" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Chilli Hot Garlic Maggi</div><div class="item-price">₹70</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.chilli.maggi">Chilli Hot Garlic Maggi</span></div><div class="item-price">₹70</div></div>
       <img src="https://tinyurl.com/34k5xxce" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Maggi Delight</div><div class="item-price">₹80</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.maggi.delight">Maggi Delight</span></div><div class="item-price">₹80</div></div>
       <img src="https://tinyurl.com/3nmrktkw" class="food-img" loading="lazy">
     </div>
   </div>
@@ -517,31 +647,31 @@ footer strong { color: #fff; }
   </div>
   <div class="items">
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Plain Sweetcorn</div><div class="item-price">₹40</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.plain.corn">Plain Sweetcorn</span></div><div class="item-price">₹40</div></div>
       <img src="" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Classic Sweetcorn</div><div class="item-price">₹50</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.classic.corn">Classic Sweetcorn</span></div><div class="item-price">₹50</div></div>
       <img src="https://tinyurl.com/zz5yhdr4" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Butter Masala Sweetcorn</div><div class="item-price">₹50</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.butter.corn">Butter Masala Sweetcorn</span></div><div class="item-price">₹50</div></div>
       <img src="https://tinyurl.com/yzp8brkb" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Tandoori Sweetcorn</div><div class="item-price">₹60</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.tandoori.corn">Tandoori Sweetcorn</span></div><div class="item-price">₹60</div></div>
       <img src="https://tinyurl.com/yremazvx" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>French Fries</div><div class="item-price">₹80</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.french.fries">French Fries</span></div><div class="item-price">₹80</div></div>
       <img src="https://tinyurl.com/ywse7d4h" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Peri Peri Fries</div><div class="item-price">₹90</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.peri.fries">Peri Peri Fries</span></div><div class="item-price">₹90</div></div>
       <img src="https://tinyurl.com/562vp3af" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Cheese Fries</div><div class="item-price">₹120</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.cheese.fries">Cheese Fries</span></div><div class="item-price">₹120</div></div>
       <img src="https://tinyurl.com/mr3cu32t" class="food-img" loading="lazy">
     </div>
   </div>
@@ -555,15 +685,15 @@ footer strong { color: #fff; }
   </div>
   <div class="items">
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Cheese Garlic Bread</div><div class="item-price">₹80</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.cheese.garlic">Cheese Garlic Bread</span></div><div class="item-price">₹80</div></div>
       <img src="" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Sweetcorn Garlic Bread</div><div class="item-price">₹90</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.corn.garlic">Sweetcorn Garlic Bread</span></div><div class="item-price">₹90</div></div>
       <img src="https://tinyurl.com/2ybjpyrn" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Stuffed Garlic Bread</div><div class="item-price">₹100</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.stuffed.garlic">Stuffed Garlic Bread</span></div><div class="item-price">₹100</div></div>
       <img src="" class="food-img" loading="lazy">
     </div>
   </div>
@@ -577,27 +707,27 @@ footer strong { color: #fff; }
   </div>
   <div class="items">
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Vegetables Macaroni</div><div class="item-price">₹80 · ₹110</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.veg.macaroni">Vegetables Macaroni</span></div><div class="item-price">₹80 · ₹110</div></div>
       <img src="https://tinyurl.com/2u5tukra" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Ghar Jesa Pasta</div><div class="item-price">₹80 · ₹110</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.ghar.pasta">Ghar Jesa Pasta</span></div><div class="item-price">₹80 · ₹110</div></div>
       <img src="https://tinyurl.com/yadcu236" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>White Sauce Pasta</div><div class="item-price">₹110 · ₹140</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.white.pasta">White Sauce Pasta</span></div><div class="item-price">₹110 · ₹140</div></div>
       <img src="https://tinyurl.com/y434z5hy" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Red Sauce Pasta</div><div class="item-price">₹110 · ₹140</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.red.pasta">Red Sauce Pasta</span></div><div class="item-price">₹110 · ₹140</div></div>
       <img src="https://tinyurl.com/bdfhs6a7" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Mix Sauce Pasta</div><div class="item-price">₹110 · ₹140</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.mix.pasta">Mix Sauce Pasta</span></div><div class="item-price">₹110 · ₹140</div></div>
       <img src="https://tinyurl.com/56h3bxh9" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Pasta Delight</div><div class="item-price">₹130 · ₹160</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.pasta.delight">Pasta Delight</span></div><div class="item-price">₹130 · ₹160</div></div>
       <img src="https://tinyurl.com/ms55azzt" class="food-img" loading="lazy">
     </div>
   </div>
@@ -611,23 +741,23 @@ footer strong { color: #fff; }
   </div>
   <div class="items">
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Iced Americano</div><div class="item-price">₹80</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.iced.americano">Iced Americano</span></div><div class="item-price">₹80</div></div>
       <img src="https://tinyurl.com/47fy4cfc" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Cold Coffee Shake</div><div class="item-price">₹100</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.cold.coffee">Cold Coffee Shake</span></div><div class="item-price">₹100</div></div>
       <img src="https://tinyurl.com/5ewfwb6m" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Oreo Shake</div><div class="item-price">₹110</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.oreo.shake">Oreo Shake</span></div><div class="item-price">₹110</div></div>
       <img src="https://tinyurl.com/cah7u96v" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>KitKat Shake</div><div class="item-price">₹110</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.kitkat.shake">KitKat Shake</span></div><div class="item-price">₹110</div></div>
       <img src="" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Chocolate Shake</div><div class="item-price">₹120</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.choco.shake">Chocolate Shake</span></div><div class="item-price">₹120</div></div>
       <img src="https://tinyurl.com/yc435uyb" class="food-img" loading="lazy">
     </div>
   </div>
@@ -641,15 +771,15 @@ footer strong { color: #fff; }
   </div>
   <div class="items">
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Tomato Soup</div><div class="item-price">₹50</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.tomato.soup">Tomato Soup</span></div><div class="item-price">₹50</div></div>
       <img src="https://tinyurl.com/a6tsj8ew" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Mix Veg Soup</div><div class="item-price">₹50</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.veg.soup">Mix Veg Soup</span></div><div class="item-price">₹50</div></div>
       <img src="https://tinyurl.com/4xcr62a7" class="food-img" loading="lazy">
     </div>
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Hot &amp; Sour</div><div class="item-price">₹50</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.hot.sour">Hot &amp; Sour</span></div><div class="item-price">₹50</div></div>
       <img src="https://tinyurl.com/yxwcxcy6" class="food-img" loading="lazy">
     </div>
   </div>
@@ -663,7 +793,7 @@ footer strong { color: #fff; }
   </div>
   <div class="items">
     <div class="image-item">
-      <div class="item-info"><div class="item-name"><span class="veg-dot"></span>Gulab Jamun (3 pcs)</div><div class="item-price">₹50</div></div>
+      <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.gulab.jamun">Gulab Jamun (3 pcs)</span></div><div class="item-price">₹50</div></div>
       <img src="https://tinyurl.com/ype23ptn" class="food-img" loading="lazy">
     </div>
   </div>
@@ -671,7 +801,7 @@ footer strong { color: #fff; }
 
 <!-- FOOTER -->
 <footer>
-  <strong>Spicy Masti</strong> &nbsp;·&nbsp; © 2026 All Rights Reserved
+  <strong>Spicy Masti</strong> &nbsp;·&nbsp; <span data-t="footer.text">© 2026 All Rights Reserved</span>
 </footer>
 
 <script>
