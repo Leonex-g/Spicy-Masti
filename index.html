@@ -382,18 +382,6 @@ footer strong { color: #fff; }
 [data-theme="dark"] .hero { background: linear-gradient(135deg, #0d0d10 0%, #1a1a1a 100%); }
 
 
-
-  70%  { transform: scale(2.2); opacity: 0; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-
-
-
-  80%  { transform: scale(2.6); opacity: 0; }
-  100% { transform: scale(2.6); opacity: 0; }
-}
-
-
 /* ── OPEN 24/7 BADGE ── */
 .hero-247 {
   display: inline-flex;
@@ -546,9 +534,9 @@ footer strong { color: #fff; }
   <div class="hero-top">
     <div class="hero-tag" data-t="hero.tag">🌶️ Desi Flavours</div>
     <div class="hero-247" data-t="hero.247">
-    <span class="live-dot"></span>
-    Open 24/7
-  </div>
+      <span class="live-dot"></span>
+      Open 24/7
+    </div>
   </div>
   <h2>Bold Food,<br/><span>Bolder Taste.</span></h2>
   <p data-t="hero.p">Fresh made • Street style • Full of flavour</p>
@@ -560,6 +548,7 @@ footer strong { color: #fff; }
   <div class="cat-pill" onclick="filterCat('burger', this)" data-t="cat.burger">🍔 Burger</div>
   <div class="cat-pill" onclick="filterCat('maggi', this)" data-t="cat.maggi">🍜 Maggi</div>
   <div class="cat-pill" onclick="filterCat('snacks', this)" data-t="cat.snacks">🍿 Snacks</div>
+  <div class="cat-pill" onclick="filterCat('pizza', this)" data-t="cat.pizza">🍕 Pizza</div>
   <div class="cat-pill" onclick="filterCat('breads', this)" data-t="cat.breads">🥖 Breads</div>
   <div class="cat-pill" onclick="filterCat('pasta', this)" data-t="cat.pasta">🍝 Pasta</div>
   <div class="cat-pill" onclick="filterCat('shakes', this)" data-t="cat.shakes">🥤 Shakes</div>
@@ -673,6 +662,58 @@ footer strong { color: #fff; }
     <div class="image-item">
       <div class="item-info"><div class="item-name"><span class="veg-dot"></span><span data-t="item.cheese.fries">Cheese Fries</span></div><div class="item-price">₹120</div></div>
       <img src="https://tinyurl.com/mr3cu32t" class="food-img" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- PIZZA [7 inches] -->
+<div class="category" id="pizza">
+  <div class="category-title" onclick="toggle(this)">
+    <div class="cat-left"><span class="cat-emoji">🍕</span> Pizza <span class="item-count" style="background:#fff3e0;color:#e65100;">7 inch · 6 items</span></div>
+    <span class="arrow">▶</span>
+  </div>
+  <div class="items">
+    <div class="image-item">
+      <div class="item-info">
+        <div class="item-name"><span class="veg-dot"></span><span data-t="item.onion.pizza">Onion Pizza</span></div>
+        <div class="item-price">₹99</div>
+      </div>
+      <img src="" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info">
+        <div class="item-name"><span class="veg-dot"></span><span data-t="item.capsicum.pizza">Capsicum Pizza</span></div>
+        <div class="item-price">₹99</div>
+      </div>
+      <img src="" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info">
+        <div class="item-name"><span class="veg-dot"></span><span data-t="item.tomato.pizza">Tomato Pizza</span></div>
+        <div class="item-price">₹99</div>
+      </div>
+      <img src="" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info">
+        <div class="item-name"><span class="veg-dot"></span><span data-t="item.corn.pizza">Sweet Corn Pizza</span></div>
+        <div class="item-price">₹99</div>
+      </div>
+      <img src="" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info">
+        <div class="item-name"><span class="veg-dot"></span><span data-t="item.cheese.pizza">Cheese Pizza</span></div>
+        <div class="item-price">₹110</div>
+      </div>
+      <img src="" class="food-img" loading="lazy">
+    </div>
+    <div class="image-item">
+      <div class="item-info">
+        <div class="item-name"><span class="veg-dot"></span><span data-t="item.veggie.pizza">Veggie Pizza</span></div>
+        <div class="item-price">₹110</div>
+      </div>
+      <img src="" class="food-img" loading="lazy">
     </div>
   </div>
 </div>
